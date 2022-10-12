@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 
 class ArPage extends StatefulWidget {
   const ArPage({super.key});
@@ -8,8 +9,24 @@ class ArPage extends StatefulWidget {
 }
 
 class _ArPageState extends State<ArPage> {
+  UnityWidgetController? controller;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+      ),
+      body: UnityWidget(
+        onUnityCreated: _onUnityCreated,
+        useAndroidViewSurface: true,
+        fullscreen: false,
+      ),
+    );
+  }
+
+  _onUnityCreated(controller) {
+    this.controller = controller;
   }
 }
