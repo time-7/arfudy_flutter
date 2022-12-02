@@ -16,16 +16,16 @@ class PriceTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(UIScale.width(1.3)),
+      padding: EdgeInsets.all(UIScale.width(1.5)),
       alignment: Alignment.center,
-      height: UIScale.height(3.2),
+      height: UIScale.height(3.5),
       decoration: BoxDecoration(
         color: Colors.black,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: UIText(
         "R\$$price",
-        fontSize: UIScale.width(3.2),
+        fontSize: UIScale.width(3.5),
         fontColor: UIColors.offWhite,
       ),
     );
