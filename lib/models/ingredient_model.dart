@@ -1,3 +1,5 @@
+import '../utils/proxier.dart';
+
 class IngredientModel {
   final String id;
   final String name;
@@ -6,4 +8,14 @@ class IngredientModel {
     required this.id,
     required this.name,
   });
+
+  static IngredientModel generateSingle() => IngredientModel(
+        id: proxyInts.toString(),
+        name: proxyName,
+      );
+
+  static List<IngredientModel> generateList({int lenght = 12}) => List.generate(
+        lenght,
+        (index) => generateSingle(),
+      );
 }
