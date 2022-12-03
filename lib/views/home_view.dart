@@ -14,23 +14,16 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UIScale.init(context);
-    return Scaffold(
-      backgroundColor: UIColors.backgroundColor,
-      appBar: AppBar(
-        title: const Text("Arfudy"),
-      ),
-      body: Padding(
-        padding: EdgeInsets.only(
-          left: UIScale.width(2),
-          right: UIScale.width(2),
-          top: UIScale.width(2),
-        ),
-        child: ListView.builder(
-          itemCount: meals.length,
-          itemBuilder: (context, index) {
-            return MealCard(meal: meals[index]);
-          },
-        ),
+    return ArfudyScaffold(
+      body: ListView.builder(
+        padding: EdgeInsets.zero,
+        itemCount: meals.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.all(UIScale.width(1)),
+            child: MealCard(meal: meals[index]),
+          );
+        },
       ),
     );
   }
@@ -59,8 +52,8 @@ class MealCard extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(UIScale.width(3)),
                     child: Container(
-                      child: UIText(meal.name),
                       alignment: Alignment.topLeft,
+                      child: UIText(meal.name),
                     ),
                   ),
                 ),
@@ -74,7 +67,7 @@ class MealCard extends StatelessWidget {
                       SizedBox(
                         width: UIScale.width(2),
                       ),
-                      ARButton(),
+                      const ARButton(),
                     ]),
                   ),
                 ),
@@ -89,13 +82,41 @@ class MealCard extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Center(
-                      child: Image.network(meal.imageUrl),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          meal.imageUrl,
+                          height: UIScale.width(30),
+                          width: UIScale.width(30),
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class ArfudyScaffold extends StatelessWidget {
+  const ArfudyScaffold({Key? key, this.body}) : super(key: key);
+  final Widget? body;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: UIColors.backgroundColor,
+      body: Column(
+        children: [
+          Container(
+            height: UIScale.height(9) + UIScale.deviceTopPadding,
+            decoration: const BoxDecoration(color: UIColors.arfudyColor),
+          ),
+          Flexible(flex: 6, child: body ?? const SizedBox()),
         ],
       ),
     );

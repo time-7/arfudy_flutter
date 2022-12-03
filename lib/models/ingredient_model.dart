@@ -11,7 +11,7 @@ class IngredientModel {
 
   static IngredientModel generateSingle() => IngredientModel(
         id: proxyInts.toString(),
-        name: proxyName,
+        name: proxyRandomAmountWords(4),
       );
 
   static List<IngredientModel> generateList({int lenght = 12}) => List.generate(
