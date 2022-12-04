@@ -21,7 +21,7 @@ void main() {
     ];
 
     final json = {
-      'itens': [
+      'result': [
         {
           'id': '01',
           'name': 'acucar',
@@ -37,7 +37,7 @@ void main() {
       ]
     };
 
-    final List<IngredientModel> ingredients = (json['itens'] as List).map((e) => IngredientModel.fromJson(e)).toList();
+    final List<IngredientModel> ingredients = (json['result'] as List).map((e) => IngredientModel.fromJson(e)).toList();
     expect(testIngredients[0].id, ingredients[0].id);
     expect(testIngredients[0].name, ingredients[0].name);
     expect(testIngredients[1].id, ingredients[1].id);
@@ -75,15 +75,15 @@ void main() {
     ];
 
     final json = {
-      'itens': [
+      'result': [
         {
           'id': '01',
           'name': 'meninas super poderosas',
           'description': 'dfsfsdfdsf',
-          'imageUrl': 'fdfsf,d',
-          'has3d': true,
-          'mealPrice': '12,12',
-          'nutritionalValue': 12.23,
+          'image_url': 'fdfsf,d',
+          'has_3d': true,
+          'meal_price': '12,12',
+          'nutritional_value': 12.23,
           'ingredients': [
             {
               'id': '01',
@@ -103,10 +103,10 @@ void main() {
           'id': '02',
           'name': 'pao com linguica',
           'description': 'fsdfdsf',
-          'imageUrl': 'asdfasdf',
-          'has3d': false,
-          'mealPrice': '15,12',
-          'nutritionalValue': 5.2,
+          'image_url': 'asdfasdf',
+          'has_3d': false,
+          'meal_price': '15,12',
+          'nutritional_value': 5.2,
           'ingredients': [
             {
               'id': '01',
@@ -125,7 +125,7 @@ void main() {
       ]
     };
 
-    final List<MealModel> meals = (json['itens'] as List).map((e) => MealModel.fromJson(e)).toList();
+    final List<MealModel> meals = (json['result'] as List).map((e) => MealModel.fromJson(e)).toList();
     expect(testMeals[0].id, meals[0].id);
     expect(testMeals[1].id, meals[1].id);
     expect(testMeals[0].imageUrl, meals[0].imageUrl);

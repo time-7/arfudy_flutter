@@ -20,7 +20,6 @@ class IngredientModel {
       );
 
   factory IngredientModel.fromJson(Map<String, dynamic> json) => IngredientModel(
-        //TODO IMPLEMENT MAP
         id: json["id"],
         name: json["name"],
       );
