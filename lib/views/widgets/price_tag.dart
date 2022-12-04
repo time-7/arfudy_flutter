@@ -26,6 +26,7 @@ class PriceTag extends StatelessWidget {
         "R\$$price",
         fontSize: UIScale.width(3.5),
         fontColor: UIColors.offWhite,
+        fontFamily: '',
       ),
     );
   }
