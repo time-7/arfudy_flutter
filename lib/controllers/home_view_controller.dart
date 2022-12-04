@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../models/meal_model.dart';
-import '../services/base_http_client.dart';
+import '../services/gateway.dart';
 
 enum HomeViewState { initial, loading, success, failure }
 

@@ -7,10 +7,7 @@
 
 import 'package:arfudy_flutter/models/ingredient_model.dart';
 import 'package:arfudy_flutter/models/meal_model.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:arfudy_flutter/main.dart';
 
 void main() {
   test('Should retrieve a List<IngredientModel> from JSON', () {
