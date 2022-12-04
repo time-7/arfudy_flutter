@@ -18,4 +18,10 @@ class IngredientModel {
         lenght,
         (index) => generateSingle(),
       );
+
+  factory IngredientModel.fromJson(Map<String, dynamic> json) => IngredientModel(
+        //TODO IMPLEMENT MAP
+        id: json["xxxxx"],
+        name: json["xxxxx"],
+      );
 }

@@ -36,4 +36,16 @@ class MealModel {
         lenght,
         (index) => generateSingle(),
       );
+
+  factory MealModel.fromJson(Map<String, dynamic> json) => MealModel(
+        //TODO IMPLEMENT MAP
+        id: json["xxxxxx"],
+        name: json["xxxxx"],
+        description: json["xxxxx"],
+        imageUrl: json["xxxxx"],
+        has3d: json["xxxxx"],
+        mealPrice: json["xxxxx"],
+        nutritionalValue: json["xxxx"],
+        ingredients: List<IngredientModel>.from(json["xxxxxxxx"].map((x) => IngredientModel.fromJson(x))),
+      );
 }
