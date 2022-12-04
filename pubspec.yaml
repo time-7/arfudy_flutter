@@ -23,3 +23,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+     - family: Antipasto
+       fonts:
+        - asset: assets/fonts/antipasto/Antipasto-Pro-Regular-trial.ttf

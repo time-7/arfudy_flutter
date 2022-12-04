@@ -13,8 +13,9 @@ class UIText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: fontSize ?? UIScale.width(5),
+        fontSize: fontSize ?? UIScale.width(5.7),
         color: fontColor,
+        fontFamily: 'Antipasto',
       ),
     );
   }
