@@ -66,6 +66,7 @@ class MealCard extends StatelessWidget {
                           meal.imageUrl,
                           height: UIScale.width(30),
                           width: UIScale.width(30),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
