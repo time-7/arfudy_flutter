@@ -10,7 +10,7 @@ import '../utils/ui_text.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({super.key});
-  final List<MealModel> meals = MealModel.generateList();
+  final List<MealModel> meals = MealModel.generateProxyList();
 
   @override
   Widget build(BuildContext context) {

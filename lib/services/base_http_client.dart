@@ -25,7 +25,8 @@ class CoreGateway {
   static Future<List<MealModel>> getMeals() async {
     try {
       final Map<String, dynamic> result = await BaseHttpClient.getAsync("/xxxxx");
-      throw Exception(); //TODO NOT IMPLEMENTED
+      final meals = (result as List).map((e) => MealModel.fromJson(e)).toList();
+      return meals;
     } catch (exception, stacktrace) {
       throw GetMealsException(stacktrace, 'CoreGateway.getMeals', exception);
     }

@@ -9,19 +9,19 @@ class IngredientModel {
     required this.name,
   });
 
-  static IngredientModel generateSingle() => IngredientModel(
+  static IngredientModel generateProxySingle() => IngredientModel(
         id: proxyInts.toString(),
         name: proxyRandomAmountWords(4),
       );
 
-  static List<IngredientModel> generateList({int lenght = 12}) => List.generate(
+  static List<IngredientModel> generateProxyList({int lenght = 12}) => List.generate(
         lenght,
-        (index) => generateSingle(),
+        (index) => generateProxySingle(),
       );
 
   factory IngredientModel.fromJson(Map<String, dynamic> json) => IngredientModel(
         //TODO IMPLEMENT MAP
-        id: json["xxxxx"],
-        name: json["xxxxx"],
+        id: json["id"],
+        name: json["name"],
       );
 }

@@ -22,7 +22,7 @@ class MealModel {
     required this.ingredients,
   });
 
-  static MealModel generateSingle() => MealModel(
+  static MealModel generateProxySingle() => MealModel(
       id: proxyInts.toString(),
       name: proxyRandomAmountWords(8),
       description: proxyWords(20),
@@ -30,22 +30,22 @@ class MealModel {
       has3d: proxyBool,
       mealPrice: (proxyDouble * 100).toStringAsFixed(2),
       nutritionalValue: proxyDouble,
-      ingredients: IngredientModel.generateList(lenght: 5));
+      ingredients: IngredientModel.generateProxyList(lenght: 5));
 
-  static List<MealModel> generateList({int lenght = 12}) => List.generate(
+  static List<MealModel> generateProxyList({int lenght = 12}) => List.generate(
         lenght,
-        (index) => generateSingle(),
+        (index) => generateProxySingle(),
       );
 
   factory MealModel.fromJson(Map<String, dynamic> json) => MealModel(
         //TODO IMPLEMENT MAP
-        id: json["xxxxxx"],
-        name: json["xxxxx"],
-        description: json["xxxxx"],
-        imageUrl: json["xxxxx"],
-        has3d: json["xxxxx"],
-        mealPrice: json["xxxxx"],
-        nutritionalValue: json["xxxx"],
-        ingredients: List<IngredientModel>.from(json["xxxxxxxx"].map((x) => IngredientModel.fromJson(x))),
+        id: json["id"],
+        name: json["name"],
+        description: json["description"],
+        imageUrl: json["imageUrl"],
+        has3d: json["has3d"],
+        mealPrice: json["mealPrice"],
+        nutritionalValue: json["nutritionalValue"],
+        ingredients: List<IngredientModel>.from(json["ingredients"].map((x) => IngredientModel.fromJson(x))),
       );
 }
