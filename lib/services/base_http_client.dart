@@ -18,9 +18,10 @@ class BaseHttpClient {
         throw GetBadRequisitionException(
             StackTrace.current, 'BadRequisition.GET: Status Code = ${response.statusCode}');
       }
-
-      debugPrint(response.body);
-      final Map<String, dynamic> result = json.decode(response.body);
+      final codeUnits = response.body.codeUnits;
+      final data = utf8.decode(codeUnits);
+      debugPrint(data);
+      final Map<String, dynamic> result = json.decode(data);
       return result;
     } catch (exception, stacktrace) {
       throw GetBadRequisitionException(stacktrace, 'BadRequisition.GET');
