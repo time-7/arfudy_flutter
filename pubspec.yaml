@@ -31,3 +31,6 @@ flutter:
      - family: Antipasto
        fonts:
         - asset: assets/fonts/antipasto/Antipasto-Pro-Regular-trial.ttf
+
+  assets:
+  - assets/images/arfudy_logo.png

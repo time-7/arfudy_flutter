@@ -14,8 +14,17 @@ class ArfudyScaffold extends StatelessWidget {
       body: Column(
         children: [
           Container(
+            padding: EdgeInsets.only(bottom: UIScale.height(1.3)),
+            alignment: Alignment.bottomCenter,
             height: UIScale.height(9) + UIScale.deviceTopPadding,
             decoration: const BoxDecoration(color: UIColors.arfudyColor),
+            child: SizedBox(
+              height: UIScale.height(6),
+              width: UIScale.width(30),
+              child: Image.asset(
+                'assets/images/arfudy_logo.png',
+              ),
+            ),
           ),
           Flexible(flex: 6, child: body ?? const SizedBox()),
         ],
