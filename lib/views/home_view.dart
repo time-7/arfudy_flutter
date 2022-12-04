@@ -1,5 +1,6 @@
 import 'package:arfudy_flutter/models/meal_model.dart';
 import 'package:arfudy_flutter/views/widgets/ar_button.dart';
+import 'package:arfudy_flutter/views/widgets/arfudy_scaffold.dart';
 import 'package:arfudy_flutter/views/widgets/price_tag.dart';
 import 'package:flutter/material.dart';
 
@@ -67,7 +68,7 @@ class MealCard extends StatelessWidget {
                       SizedBox(
                         width: UIScale.width(2),
                       ),
-                      const ARButton(),
+                      meal.has3d == true ? const ARButton() : const SizedBox(),
                     ]),
                   ),
                 ),
@@ -96,27 +97,6 @@ class MealCard extends StatelessWidget {
               ),
             ),
           )
-        ],
-      ),
-    );
-  }
-}
-
-class ArfudyScaffold extends StatelessWidget {
-  const ArfudyScaffold({Key? key, this.body}) : super(key: key);
-  final Widget? body;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: UIColors.backgroundColor,
-      body: Column(
-        children: [
-          Container(
-            height: UIScale.height(9) + UIScale.deviceTopPadding,
-            decoration: const BoxDecoration(color: UIColors.arfudyColor),
-          ),
-          Flexible(flex: 6, child: body ?? const SizedBox()),
         ],
       ),
     );
