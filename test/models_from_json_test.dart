@@ -12,9 +12,9 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('Should retrieve a List<IngredientModel> from JSON', () {
     List<IngredientModel> testIngredients = [
-      IngredientModel(id: '01', name: 'acucar'),
-      IngredientModel(id: '02', name: 'tempero'),
-      IngredientModel(id: '03', name: 'tudo que ha de bom'),
+      IngredientModel(id: 1, name: 'acucar'),
+      IngredientModel(id: 2, name: 'tempero'),
+      IngredientModel(id: 3, name: 'tudo que ha de bom'),
     ];
 
     final json = {
@@ -45,14 +45,14 @@ void main() {
 
   test('Should retrieve a List<MealModel> from JSON', () {
     List<IngredientModel> testIngredients = [
-      IngredientModel(id: '01', name: 'acucar'),
-      IngredientModel(id: '02', name: 'tempero'),
-      IngredientModel(id: '03', name: 'tudo que ha de bom'),
+      IngredientModel(id: 1, name: 'acucar'),
+      IngredientModel(id: 2, name: 'tempero'),
+      IngredientModel(id: 3, name: 'tudo que ha de bom'),
     ];
 
     List<MealModel> testMeals = [
       MealModel(
-          id: '01',
+          id: 1,
           name: 'meninas super poderosas',
           description: 'dfsfsdfdsf',
           imageUrl: 'fdfsf,d',
@@ -61,7 +61,7 @@ void main() {
           nutritionalValue: 12.23,
           ingredients: testIngredients),
       MealModel(
-          id: '02',
+          id: 2,
           name: 'pao com linguica',
           description: 'fsdfdsf',
           imageUrl: 'asdfasdf',
