@@ -7,7 +7,7 @@ import 'package:http/http.dart';
 import 'error/exceptions.dart';
 
 class BaseHttpClient {
-  static const String _baseUrl = "";
+  static const String _baseUrl = "https://arfudy-backend.onrender.com";
 
   static Future<Map<String, dynamic>> getAsync<T>(String routeName) async {
     try {

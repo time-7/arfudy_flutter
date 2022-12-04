@@ -1,7 +1,7 @@
 import '../utils/proxier.dart';
 
 class IngredientModel {
-  final String id;
+  final int id;
   final String name;
 
   IngredientModel({
@@ -10,7 +10,7 @@ class IngredientModel {
   });
 
   static IngredientModel generateProxySingle() => IngredientModel(
-        id: proxyInts.toString(),
+        id: proxyInt,
         name: proxyRandomAmountWords(4),
       );
 
@@ -20,7 +20,7 @@ class IngredientModel {
       );
 
   factory IngredientModel.fromJson(Map<String, dynamic> json) => IngredientModel(
-        id: json["id"],
-        name: json["name"],
+        id: json["idIngrediente"],
+        name: json["nome"],
       );
 }

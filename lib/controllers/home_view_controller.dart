@@ -12,8 +12,7 @@ class HomeViewController extends ChangeNotifier {
   static ValueNotifier<HomeViewState> get state => _state;
   static List<MealModel> get meals => _meals;
 
-  static init() {
-    _meals = [];
+  static init() async {
     _state.value = HomeViewState.loading;
     _state.notifyListeners();
     _getMeals();
@@ -21,6 +20,7 @@ class HomeViewController extends ChangeNotifier {
 
   static _getMeals() async {
     try {
+      _meals = [];
       _meals = await GetMealsService.call();
       _state.value = HomeViewState.success;
       _state.notifyListeners();

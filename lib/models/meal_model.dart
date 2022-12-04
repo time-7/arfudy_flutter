@@ -2,7 +2,7 @@ import '../utils/proxier.dart';
 import 'ingredient_model.dart';
 
 class MealModel {
-  final String id;
+  final int id;
   final String name;
   final String description;
   final String imageUrl;
@@ -23,7 +23,7 @@ class MealModel {
   });
 
   static MealModel generateProxySingle() => MealModel(
-      id: proxyInts.toString(),
+      id: proxyInt,
       name: proxyRandomAmountWords(8),
       description: proxyWords(20),
       imageUrl: proxyImgUrl,
@@ -38,13 +38,12 @@ class MealModel {
       );
 
   factory MealModel.fromJson(Map<String, dynamic> json) => MealModel(
-        id: json["id"],
-        name: json["name"],
-        description: json["description"],
-        imageUrl: json["image_url"],
-        has3d: json["has_3d"],
-        mealPrice: json["meal_price"],
-        nutritionalValue: json["nutritional_value"],
-        ingredients: List<IngredientModel>.from(json["ingredients"].map((x) => IngredientModel.fromJson(x))),
-      );
+      id: json["idPrato"],
+      name: json["nome"],
+      description: json["dsPrato"],
+      imageUrl: json["imagem"],
+      has3d: json["has3d"],
+      mealPrice: json["valor"].toString(),
+      nutritionalValue: json["valorNutricional"],
+      ingredients: List<IngredientModel>.from(json["ingredienteList"].map((x) => IngredientModel.fromJson(x))));
 }
