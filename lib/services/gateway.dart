@@ -10,7 +10,7 @@ class CoreGateway {
       final meals = MealModel.generateProxyList();
       return meals;
     } catch (exception, stacktrace) {
-      throw GetMealsException(stacktrace, 'CoreGateway.getMeals', exception);
+      throw GetMealsException(stacktrace, 'CoreGateway.getMeals');
     }
   }
 }

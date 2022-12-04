@@ -13,11 +13,17 @@ class BaseHttpClient {
     try {
       final String url = _baseUrl + routeName;
       Response response = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
+
+      if (response.statusCode != 200) {
+        throw GetBadRequisitionException(
+            StackTrace.current, 'BadRequisition.GET: Status Code = ${response.statusCode}');
+      }
+
       debugPrint(response.body);
       final Map<String, dynamic> result = json.decode(response.body);
       return result;
     } catch (exception, stacktrace) {
-      throw GetBadRequisitionException(stacktrace, 'BadRequisition.GET', exception);
+      throw GetBadRequisitionException(stacktrace, 'BadRequisition.GET');
     }
   }
 }
