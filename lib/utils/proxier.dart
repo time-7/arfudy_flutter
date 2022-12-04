@@ -4,11 +4,9 @@ String get proxyImgUrl => 'https://picsum.photos/seed/image${faker.randomGenerat
 int get proxyInt => faker.randomGenerator.integer(9999);
 List<int> get proxyInts => faker.randomGenerator.numbers(200, 12);
 double get proxyDouble => faker.randomGenerator.decimal();
-double get proxyAspectRatio => faker.randomGenerator.integer(100) / 100;
 String get proxyWord => faker.lorem.word();
 String proxyWords([int words = 12]) => faker.lorem.words(words).join(' ');
 String get proxyName => faker.person.name();
-String get proxyGuid => faker.guid.guid();
 bool get proxyBool => faker.randomGenerator.boolean();
 
 String proxyRandomAmountWords([int maximumAmountWords = 8]) {
