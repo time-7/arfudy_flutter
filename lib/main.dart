@@ -1,5 +1,5 @@
-import 'package:arfudy_flutter/ar_page.dart';
-import 'package:arfudy_flutter/home_page.dart';
+import 'package:arfudy_flutter/views/ar_page.dart';
+import 'package:arfudy_flutter/views/home_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,11 +15,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomePage(),
+        '/': (context) => const HomeView(),
         'ar_page': (context) => const ArPage(),
       },
     );
