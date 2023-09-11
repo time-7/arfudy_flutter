@@ -1,7 +1,7 @@
 import 'package:arfudy_flutter/controllers/ar_view_controller.dart';
 import 'package:arfudy_flutter/models/meal_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_unity_widget/flutter_unity_widget.dart';
+// import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 import 'package:provider/provider.dart';
 
 class ArView extends StatelessWidget {
@@ -20,11 +20,11 @@ class ArView extends StatelessWidget {
               shadowColor: Colors.transparent,
               leading: const BackButton(color: Colors.white)),
           backgroundColor: Colors.black,
-          body: UnityWidget(
-            onUnityCreated: contoller.onUnityCreated,
-            useAndroidViewSurface: true,
-            fullscreen: false,
-          ),
+          // body: UnityWidget(
+          //   onUnityCreated: contoller.onUnityCreated,
+          //   useAndroidViewSurface: true,
+          //   fullscreen: false,
+          // ),
         );
       },
     );
