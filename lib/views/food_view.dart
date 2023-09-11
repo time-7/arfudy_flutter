@@ -1,3 +1,4 @@
+import 'package:arfudy_flutter/utils/ui_colors.dart';
 import 'package:arfudy_flutter/views/widgets/arfudy_scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -12,13 +13,16 @@ class FoodView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ArfudyScaffold(
+      leading: const BackButton(
+        color: Colors.white,
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: UIScale.height(2)),
         child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
-                height: UIScale.height(1),
+                height: UIScale.height(1.5),
               ),
               Container(
                 width: UIScale.width(100),
@@ -49,7 +53,8 @@ class FoodView extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+                          StatefulBuilder(builder:
+                              (BuildContext context, StateSetter setState) {
                             return AnimatedOpacity(
                               duration: const Duration(seconds: 2),
                               opacity: 0,
@@ -68,7 +73,8 @@ class FoodView extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.all(UIScale.height(2)),
-                      child: UIText(meal.description, textAlign: TextAlign.justify),
+                      child: UIText(meal.description,
+                          textAlign: TextAlign.justify),
                     ),
                   ],
                 ),
@@ -77,7 +83,8 @@ class FoodView extends StatelessWidget {
                 height: UIScale.height(1),
               ),
               Container(
-                padding: EdgeInsets.only(top: UIScale.height(2), bottom: UIScale.height(1)),
+                padding: EdgeInsets.only(
+                    top: UIScale.height(2), bottom: UIScale.height(1)),
                 width: UIScale.width(100),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -92,13 +99,15 @@ class FoodView extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: UIScale.height(2)),
                       child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           itemCount: meal.ingredients.length,
                           itemBuilder: ((context, index) {
                             return Column(
                               children: [
-                                UIText(meal.ingredients[index].name, fontSize: UIScale.width(5)),
+                                UIText(meal.ingredients[index].name,
+                                    fontSize: UIScale.width(5)),
                                 const Divider()
                               ],
                             );
@@ -111,7 +120,8 @@ class FoodView extends StatelessWidget {
                 height: UIScale.height(1),
               ),
               Container(
-                padding: EdgeInsets.only(top: UIScale.height(2), bottom: UIScale.height(1)),
+                padding: EdgeInsets.only(
+                    top: UIScale.height(2), bottom: UIScale.height(1)),
                 width: UIScale.width(100),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -137,8 +147,50 @@ class FoodView extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(
+                height: UIScale.height(1.5),
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                    top: UIScale.height(2), bottom: UIScale.height(1)),
+                width: UIScale.width(100),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  children: [
+                    Column(
+                      children: [
+                        const UIText(
+                          "Valor",
+                          fontWeight: FontWeight.bold,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: UIScale.height(2)),
+                          child: UIText(
+                            "R\$ ${meal.mealPrice}",
+                            fontSize: UIScale.width(5),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: UIScale.height(1.5),
+              ),
             ],
           ),
+        ),
+      ),
+      fab: FloatingActionButton(
+        onPressed: () =>
+            Navigator.of(context).pushNamed('ar_page', arguments: meal),
+        child: const Icon(
+          Icons.view_in_ar,
+          color: UIColors.offWhite,
         ),
       ),
     );

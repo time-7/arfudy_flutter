@@ -52,7 +52,7 @@ class MealCard extends StatelessWidget {
                         SizedBox(
                           width: UIScale.width(2),
                         ),
-                        meal.has3d == true ? const ARButton() : const SizedBox(),
+                        meal.has3d == true ? ARButton(meal) : const SizedBox(),
                       ]),
                     ),
                   ),
