@@ -1,31 +1,35 @@
-import 'package:arfudy_flutter/controllers/ar_view_controller.dart';
-import 'package:arfudy_flutter/utils/ui_theme.dart';
-// import 'package:arfudy_flutter/views/ar_view.dart';
-import 'package:arfudy_flutter/views/home_view.dart';
+import 'package:arfudy_flutter/utils/ui_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+
+import 'global_module.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ArViewController(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: UITheme.lightTheme,
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const HomeView(),
-          // 'ar_page': (context) => const ArView(),
-        },
+    return GetMaterialApp(
+      transitionDuration: const Duration(milliseconds: 200),
+      scaffoldMessengerKey: rootScaffoldMessengerKey,
+      title: 'Arfudy',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: UIColors.arfudyColor),
+        useMaterial3: true,
       ),
+      getPages: GlobalModule.routes,
+      initialRoute: '/',
     );
   }
 }
