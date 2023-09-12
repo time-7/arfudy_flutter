@@ -18,7 +18,14 @@ dependencies:
   equatable: 2.0.5
   #  flutter_unity_widget: ^2022.2.0
   provider: 6.0.5
-  get: ^4.6.5
+  get: 4.6.5
+  hive: 2.2.3
+  hive_flutter: 1.1.0
+  dio: 5.3.2
+  qr_flutter: 4.1.0
+  flutter_camera_qrcode_scanner: 2.0.0
+  intl: 0.18.1
+  curl_logger_dio_interceptor: 1.0.0
 
 dev_dependencies:
   flutter_test:
