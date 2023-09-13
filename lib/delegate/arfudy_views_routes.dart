@@ -1,4 +1,4 @@
-import 'package:arfudy_flutter/views/home_view.dart';
+import 'package:arfudy_flutter/views/qr_code_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/src/bindings_interface.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -18,7 +18,7 @@ class ArfudyViews {
       curve: Curves.easeIn,
       transition: Transition.rightToLeft,
       name: _ArfudyRoutes.root,
-      page: () => const HomeView(),
+      page: () => const QrCodeView(),
       binding: _binding,
     ),
   ];
