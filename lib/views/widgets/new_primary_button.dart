@@ -6,30 +6,38 @@ import '../../utils/ui_colors.dart';
 class NewPrimaryButton extends StatelessWidget {
   const NewPrimaryButton({
     super.key,
+    required this.buttonText,
+    this.onPressed,
   });
+
+  final String buttonText;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: UIColors.secondaryCaramel,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(30),
-        ),
-        border: Border.all(
-          color: Colors.black,
-          width: 2,
-        ),
-      ),
-      width: 260,
-      height: 62,
+    return GestureDetector(
+      onTap: onPressed,
       child: Container(
-        alignment: Alignment.center,
-        child: const NewUIText(
-          'Iniciar atendimento',
-          fontColor: UIColors.tertiaryCaramel,
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
+        decoration: BoxDecoration(
+          color: UIColors.secondaryCaramel,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(30),
+          ),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
+        ),
+        width: 260,
+        height: 62,
+        child: Container(
+          alignment: Alignment.center,
+          child: NewUIText(
+            buttonText,
+            fontColor: UIColors.tertiaryCaramel,
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );
