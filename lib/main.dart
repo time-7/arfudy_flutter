@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'delegate/arfudy_views_routes.dart';
 import 'global_module.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       getPages: GlobalModule.routes,
-      initialRoute: '/',
+      initialRoute: ArfudyRoutes.test,
     );
   }
 }
