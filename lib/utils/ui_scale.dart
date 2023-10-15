@@ -4,6 +4,7 @@ class UIScale {
   static late double _widthDevice;
   static late double _heightDevice;
   static late double _mediaQueryTopPadding;
+  static late double _mediaQueryBottomPadding;
   static late double _deviceTextScaleFactor;
   static bool _wasUIScaleInitialized = false;
 
@@ -12,6 +13,7 @@ class UIScale {
   static double textSize(double size) => (_widthDevice / 1000) * size;
 
   static double get deviceTopPadding => _mediaQueryTopPadding;
+  static double get deviceBottomPadding => _mediaQueryBottomPadding;
   static double get deviceTextScaleFactor => _deviceTextScaleFactor;
   static double get widthDevice => _widthDevice;
   static double get heightDevice => _heightDevice;
@@ -22,6 +24,7 @@ class UIScale {
       _widthDevice = screenSize.width;
       _heightDevice = screenSize.height;
       _mediaQueryTopPadding = MediaQuery.of(context).padding.top;
+      _mediaQueryBottomPadding = MediaQuery.of(context).padding.bottom;
       _deviceTextScaleFactor = MediaQuery.of(context).textScaleFactor;
       _wasUIScaleInitialized = true;
     }
