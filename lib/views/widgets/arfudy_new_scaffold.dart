@@ -24,7 +24,7 @@ class ArfudyNewScaffold extends StatelessWidget {
       backgroundColor: UIColors.primaryBlue,
       drawer: const ArfudyDrawer(),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(UIScale.deviceTopPadding + UIScale.height(2)),
+        preferredSize: Size.fromHeight(UIScale.topDevicePadding + UIScale.height(2)),
         child: Container(
           width: UIScale.width(100),
           decoration: const BoxDecoration(
@@ -52,7 +52,7 @@ class ArfudyNewScaffold extends StatelessWidget {
                       _scaffoldKey.currentState?.openDrawer();
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(top: UIScale.deviceTopPadding),
+                      padding: EdgeInsets.only(top: UIScale.topDevicePadding),
                       child: Container(
                         alignment: Alignment.center,
                         child: const Icon(
@@ -67,7 +67,7 @@ class ArfudyNewScaffold extends StatelessWidget {
                 Expanded(
                   flex: 4,
                   child: Padding(
-                    padding: EdgeInsets.only(top: UIScale.deviceTopPadding),
+                    padding: EdgeInsets.only(top: UIScale.topDevicePadding),
                     child: Container(
                       alignment: Alignment.center,
                       child: Image.asset(
@@ -100,10 +100,10 @@ class ArfudyNewScaffold extends StatelessWidget {
                   left: 0,
                   right: 0,
                   child: SizedBox(
-                    height: UIScale.height(10) + UIScale.deviceBottomPadding,
+                    height: UIScale.height(10) + UIScale.bottomDevicePadding,
                     width: UIScale.width(100),
                     child: Padding(
-                      padding: EdgeInsets.only(right: 30.0, left: 30.0, bottom: UIScale.deviceBottomPadding + 20),
+                      padding: EdgeInsets.only(right: 30.0, left: 30.0, bottom: UIScale.bottomDevicePadding + 20),
                       child: Center(child: bottomBar ?? Container()),
                     ),
                   ),

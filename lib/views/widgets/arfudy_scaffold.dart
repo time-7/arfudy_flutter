@@ -23,7 +23,7 @@ class ArfudyScaffold extends StatelessWidget {
         backgroundColor: Theme.of(context).primaryColor,
         leading: leading,
         centerTitle: true,
-        toolbarHeight: UIScale.height(5) + UIScale.deviceTopPadding,
+        toolbarHeight: UIScale.height(5) + UIScale.topDevicePadding,
         title: SizedBox(
           height: UIScale.height(6),
           width: UIScale.width(30),

@@ -1,32 +1,24 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 
 class UIScale {
-  static late double _widthDevice;
-  static late double _heightDevice;
-  static late double _mediaQueryTopPadding;
-  static late double _mediaQueryBottomPadding;
-  static late double _deviceTextScaleFactor;
-  static bool _wasUIScaleInitialized = false;
+  static late double widthDevice;
+  static late double heightDevice;
+  static late double topDevicePadding;
+  static late double bottomDevicePadding;
+  static late double diagonalDevice;
 
-  static double width(double percentage) => (_widthDevice / 100) * percentage;
-  static double height(double percentage) => (_heightDevice / 100) * percentage;
-  static double textSize(double size) => (_widthDevice / 1000) * size;
-
-  static double get deviceTopPadding => _mediaQueryTopPadding;
-  static double get deviceBottomPadding => _mediaQueryBottomPadding;
-  static double get deviceTextScaleFactor => _deviceTextScaleFactor;
-  static double get widthDevice => _widthDevice;
-  static double get heightDevice => _heightDevice;
+  static double width(double percentage) => (widthDevice / 100) * percentage;
+  static double height(double percentage) => (heightDevice / 100) * percentage;
+  static double textSize(double size) => (widthDevice / 1000) * size;
 
   static void init(BuildContext context) {
-    if (_wasUIScaleInitialized == false) {
-      Size screenSize = MediaQuery.of(context).size;
-      _widthDevice = screenSize.width;
-      _heightDevice = screenSize.height;
-      _mediaQueryTopPadding = MediaQuery.of(context).padding.top;
-      _mediaQueryBottomPadding = MediaQuery.of(context).padding.bottom;
-      _deviceTextScaleFactor = MediaQuery.of(context).textScaleFactor;
-      _wasUIScaleInitialized = true;
-    }
+    Size screenSize = MediaQuery.of(context).size;
+    widthDevice = screenSize.width;
+    heightDevice = screenSize.height;
+    topDevicePadding = MediaQuery.of(context).padding.top;
+    bottomDevicePadding = MediaQuery.of(context).padding.bottom;
+    diagonalDevice = sqrt(pow(widthDevice, 2) + pow(heightDevice, 2));
   }
 }

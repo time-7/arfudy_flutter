@@ -53,7 +53,7 @@ class _ArfudyDrawerState extends State<ArfudyDrawer> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: UIScale.height(10) + UIScale.deviceTopPadding,
+                      height: UIScale.height(10) + UIScale.topDevicePadding,
                     ),
                     const SizedBox(
                       width: 100,

@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       getPages: GlobalModule.routes,
-      initialRoute: ArfudyRoutes.test,
+      initialRoute: ArfudyRoutes.splash,
     );
   }
 }

@@ -23,7 +23,7 @@ class _QrCodeViewState extends State<QrCodeView> {
     return Scaffold(
       body: Column(children: [
         SizedBox(
-          height: UIScale.deviceTopPadding,
+          height: UIScale.topDevicePadding,
         ),
         Expanded(
           flex: 1,
