@@ -40,6 +40,32 @@ flutter:
     - family: Antipasto
       fonts:
         - asset: assets/fonts/antipasto/Antipasto-Pro-Regular-trial.otf
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
+        - asset: assets/fonts/montserrat/Montserrat-Light.ttf
+          weight: 300
+        - asset: assets/fonts/montserrat/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/montserrat/Montserrat-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/montserrat/Montserrat-Black.ttf
+          weight: 900
+    - family: NotoSerif
+      fonts:
+        - asset: assets/fonts/noto/NotoSerif-Regular.ttf
+        - asset: assets/fonts/noto/NotoSerif-Light.ttf
+          weight: 300
+        - asset: assets/fonts/noto/NotoSerif-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/noto/NotoSerif-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/noto/NotoSerif-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/noto/NotoSerif-Black.ttf
+          weight: 900
 
   assets:
     - assets/images/arfudy_logo.png
