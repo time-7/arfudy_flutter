@@ -24,7 +24,7 @@ class ArfudyNewScaffold extends StatelessWidget {
       backgroundColor: UIColors.primaryBlue,
       drawer: const ArfudyDrawer(),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(UIScale.deviceTopPadding + UIScale.height(5)),
+        preferredSize: Size.fromHeight(UIScale.deviceTopPadding + UIScale.height(2)),
         child: Container(
           width: UIScale.width(100),
           decoration: const BoxDecoration(
