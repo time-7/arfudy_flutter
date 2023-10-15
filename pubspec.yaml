@@ -45,6 +45,8 @@ flutter:
         - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
         - asset: assets/fonts/montserrat/Montserrat-Light.ttf
           weight: 300
+        - asset: assets/fonts/montserrat/Montserrat-Medium.ttf
+          weight: 500
         - asset: assets/fonts/montserrat/Montserrat-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
@@ -69,3 +71,4 @@ flutter:
 
   assets:
     - assets/images/arfudy_logo.png
+    - assets/images/arfudy_new_logo.png
