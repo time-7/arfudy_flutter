@@ -7,7 +7,9 @@ import 'package:get/get.dart';
 import '../delegate/arfudy_views_routes.dart';
 
 class TestView extends StatelessWidget {
-  const TestView({super.key});
+  TestView({super.key});
+
+  final isdashboard = false.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +58,15 @@ class TestView extends StatelessWidget {
           ],
         ),
       ),
-      bottomBar: const NewPrimaryButton(
+      bottomBar: NewPrimaryButton(
         buttonText: 'Iniciar atendimento',
+        onPressed: () async {
+          isdashboard.value = true;
+          print('Iniciar atendimento');
+          await Future.delayed(const Duration(seconds: 2));
+          isdashboard.value = false;
+        },
+        isLoading: isdashboard,
       ),
     );
   }
