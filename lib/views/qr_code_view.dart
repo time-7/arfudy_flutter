@@ -54,7 +54,7 @@ class _QrCodeViewState extends State<QrCodeView> {
             width: UIScale.width(100),
             child: Column(mainAxisSize: MainAxisSize.max, children: [
               Container(
-                height: UIScale.height(30),
+                height: UIScale.height(25),
                 width: UIScale.width(100),
                 color: UIColors.primaryBlue,
                 alignment: Alignment.bottomCenter,
@@ -70,8 +70,8 @@ class _QrCodeViewState extends State<QrCodeView> {
                 ),
               ),
               SizedBox(
-                height: UIScale.width(80),
-                width: UIScale.width(80),
+                height: UIScale.width(100),
+                width: UIScale.width(100),
               ),
               Expanded(
                 child: Container(

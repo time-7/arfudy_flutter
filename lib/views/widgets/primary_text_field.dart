@@ -11,6 +11,10 @@ class PrimaryTextField extends StatefulWidget {
     this.onChanged,
     this.maxLines,
     this.minLines,
+    this.textInputAction,
+    this.onSubmitted,
+    this.keyboardType,
+    this.textCapitalization = TextCapitalization.none,
   });
 
   @override
@@ -21,6 +25,10 @@ class PrimaryTextField extends StatefulWidget {
   final Function(String)? onChanged;
   final int? maxLines;
   final int? minLines;
+  final TextInputAction? textInputAction;
+  final Function(String)? onSubmitted;
+  final TextInputType? keyboardType;
+  final TextCapitalization textCapitalization;
 }
 
 class _PrimaryTextFieldState extends State<PrimaryTextField> {
@@ -68,6 +76,10 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
                 ],
               ),
               child: TextFormField(
+                keyboardType: widget.keyboardType,
+                textCapitalization: widget.textCapitalization,
+                onFieldSubmitted: widget.onSubmitted,
+                textInputAction: widget.textInputAction,
                 maxLines: widget.maxLines,
                 minLines: widget.minLines,
                 onChanged: (value) {
