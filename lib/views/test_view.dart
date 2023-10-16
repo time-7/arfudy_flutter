@@ -26,9 +26,16 @@ class TestView extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: MenuContainer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(ArfudyRoutes.enteringTable);
+                },
+                child: const MenuContainer(
+                  text: 'ENTERING TABLE VIEW',
+                ),
+              ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
