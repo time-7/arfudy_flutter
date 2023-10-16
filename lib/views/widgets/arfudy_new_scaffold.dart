@@ -9,12 +9,14 @@ class ArfudyNewScaffold extends StatelessWidget {
     super.key,
     required this.body,
     this.bottomBar,
+    this.hasDrawer = false,
   });
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final Widget body;
   final Widget? bottomBar;
+  final bool hasDrawer;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,9 @@ class ArfudyNewScaffold extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       key: _scaffoldKey,
       backgroundColor: UIColors.primaryBlue,
-      drawer: const ArfudyDrawer(),
+      drawer: hasDrawer ? const ArfudyDrawer() : null,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(UIScale.topDevicePadding + UIScale.height(5)),
+        preferredSize: Size.fromHeight(UIScale.topDevicePadding + 40),
         child: Container(
           width: UIScale.width(100),
           decoration: const BoxDecoration(
@@ -47,22 +49,24 @@ class ArfudyNewScaffold extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: GestureDetector(
-                    onTap: () {
-                      _scaffoldKey.currentState?.openDrawer();
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(top: UIScale.topDevicePadding),
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: const Icon(
-                          Icons.menu_rounded,
-                          color: UIColors.secondaryCaramel,
-                          size: 45,
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: hasDrawer
+                      ? GestureDetector(
+                          onTap: () {
+                            _scaffoldKey.currentState?.openDrawer();
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(top: UIScale.topDevicePadding),
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: const Icon(
+                                Icons.menu_rounded,
+                                color: UIColors.secondaryCaramel,
+                                size: 45,
+                              ),
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
                 ),
                 Expanded(
                   flex: 4,
