@@ -9,7 +9,7 @@ import '../delegate/arfudy_views_routes.dart';
 class TestView extends StatelessWidget {
   TestView({super.key});
 
-  final isdashboard = false.obs;
+  final testLoading = false.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +39,16 @@ class TestView extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: MenuContainer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(ArfudyRoutes.tableSituation);
+                },
+                child: const MenuContainer(
+                  text: 'TABLE SITUATION VIEW',
+                ),
+              ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
@@ -59,14 +66,13 @@ class TestView extends StatelessWidget {
         ),
       ),
       bottomBar: NewPrimaryButton(
-        buttonText: 'Iniciar atendimento',
+        buttonText: 'Teste de Loading',
         onPressed: () async {
-          isdashboard.value = true;
-          print('Iniciar atendimento');
+          testLoading.value = true;
           await Future.delayed(const Duration(seconds: 2));
-          isdashboard.value = false;
+          testLoading.value = false;
         },
-        isLoading: isdashboard,
+        isLoading: testLoading,
       ),
     );
   }

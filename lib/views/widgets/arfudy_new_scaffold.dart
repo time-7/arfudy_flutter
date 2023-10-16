@@ -90,33 +90,57 @@ class ArfudyNewScaffold extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 30.0, left: 30.0),
-                  child: body,
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: SizedBox(
-                    height: UIScale.height(10) + UIScale.bottomDevicePadding,
-                    width: UIScale.width(100),
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 30.0, left: 30.0, bottom: UIScale.bottomDevicePadding + 20),
-                      child: Center(child: bottomBar ?? Container()),
+      body: _DismissKeyboardWidget(
+        child: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 30.0, left: 30.0),
+                    child: body,
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: SizedBox(
+                      height: UIScale.height(10) + UIScale.bottomDevicePadding,
+                      width: UIScale.width(100),
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 30.0, left: 30.0, bottom: UIScale.bottomDevicePadding + 20),
+                        child: Center(child: bottomBar ?? Container()),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
+  }
+}
+
+class _DismissKeyboardWidget extends StatelessWidget {
+  const _DismissKeyboardWidget({
+    required this.child,
+    Key? key,
+  }) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => dismissKeyboard(context),
+      child: child,
+    );
+  }
+
+  void dismissKeyboard(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
   }
 }

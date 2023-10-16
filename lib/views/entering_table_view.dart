@@ -93,6 +93,9 @@ class EnteringTableView extends StatelessWidget {
                     PrimaryTextField(
                       controller: _controller,
                       hintText: 'Insira seu nome completo:',
+                      textInputAction: TextInputAction.go,
+                      keyboardType: TextInputType.name,
+                      textCapitalization: TextCapitalization.words,
                     ),
                   ],
                 ),

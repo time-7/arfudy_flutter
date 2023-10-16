@@ -1,6 +1,7 @@
 import 'package:arfudy_flutter/views/entering_table_view.dart';
 import 'package:arfudy_flutter/views/qr_code_view.dart';
 import 'package:arfudy_flutter/views/splash_view.dart';
+import 'package:arfudy_flutter/views/table_situation_view.dart';
 import 'package:arfudy_flutter/views/test_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/src/bindings_interface.dart';
@@ -15,6 +16,7 @@ class ArfudyRoutes {
   static const test = '/test';
   static const splash = '/splash';
   static const enteringTable = '/entering-table';
+  static const tableSituation = '/table-situation';
 }
 
 class ArfudyViews {
@@ -30,7 +32,7 @@ class ArfudyViews {
     ),
     GetPage(
       curve: Curves.easeIn,
-      transition: Transition.rightToLeft,
+      transition: Transition.fadeIn,
       name: ArfudyRoutes.test,
       page: () => TestView(),
     ),
@@ -46,6 +48,13 @@ class ArfudyViews {
       transition: Transition.rightToLeft,
       name: ArfudyRoutes.enteringTable,
       page: () => EnteringTableView(),
+      binding: _binding,
+    ),
+    GetPage(
+      curve: Curves.easeIn,
+      transition: Transition.rightToLeft,
+      name: ArfudyRoutes.tableSituation,
+      page: () => const TableSituationView(),
       binding: _binding,
     ),
   ];
