@@ -32,7 +32,7 @@ class ArfudyViews {
       curve: Curves.easeIn,
       transition: Transition.rightToLeft,
       name: ArfudyRoutes.test,
-      page: () => const TestView(),
+      page: () => TestView(),
     ),
     GetPage(
       curve: Curves.easeIn,
