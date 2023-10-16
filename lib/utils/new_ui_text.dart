@@ -9,6 +9,7 @@ class NewUIText extends StatelessWidget {
     this.fontColor = Colors.black,
     this.fontWeight,
     this.decoration,
+    this.textAlign,
   });
 
   final String text;
@@ -17,11 +18,13 @@ class NewUIText extends StatelessWidget {
   final Color fontColor;
   final FontWeight? fontWeight;
   final TextDecoration? decoration;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign,
       style: TextStyle(
         decoration: decoration,
         fontFamily: fontFamily.name,
