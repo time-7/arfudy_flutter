@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../utils/arfudy_dialog.dart';
 import '../utils/ui_colors.dart';
+import '../utils/ui_scale.dart';
 
 class TableSituationView extends StatelessWidget {
   const TableSituationView({super.key});
@@ -15,21 +16,21 @@ class TableSituationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ArfudyNewScaffold(
       hasDrawer: true,
-      body: const SingleChildScrollView(
+      body:  SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(name: 'Felippe', items: [
                   '3x macarrão enjoado',
                 ]),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(
                   name: 'Marcos',
@@ -44,7 +45,7 @@ class TableSituationView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(
                   name: 'Daniel',
@@ -59,7 +60,7 @@ class TableSituationView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(
                   name: 'Isabela',
@@ -74,7 +75,7 @@ class TableSituationView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(
                   name: 'Steven',
@@ -89,7 +90,7 @@ class TableSituationView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(
                   name: 'Gabriel',
@@ -104,7 +105,7 @@ class TableSituationView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(
                   name: 'Julia',
@@ -119,7 +120,7 @@ class TableSituationView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(
                   name: 'Adrian',
@@ -129,14 +130,14 @@ class TableSituationView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 30),
                 child: PersonOrdersContainer(
                   name: 'João',
                   items: [],
                 ),
               ),
-              SizedBox(height: 70),
+              SizedBox(height: UIScale.height(10) + UIScale.bottomDevicePadding),
             ],
           ),
         ),
