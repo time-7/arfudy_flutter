@@ -134,6 +134,7 @@ class TableSituationView extends StatelessWidget {
                   items: [],
                 ),
               ),
+              SizedBox(height: 70),
             ],
           ),
         ),
