@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../delegate/arfudy_views_routes.dart';
+import '../utils/ui_scale.dart';
 
 class TestView extends StatelessWidget {
   TestView({super.key});
@@ -62,7 +63,7 @@ class TestView extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: MenuContainer(),
             ),
-            const SizedBox(height: 80),
+            UIScale.kBottomBarHeight
           ],
         ),
       ),
