@@ -16,7 +16,7 @@ class TableSituationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ArfudyNewScaffold(
       hasDrawer: true,
-      body:  SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -137,7 +137,7 @@ class TableSituationView extends StatelessWidget {
                   items: [],
                 ),
               ),
-              SizedBox(height: UIScale.height(10) + UIScale.bottomDevicePadding),
+              UIScale.kBottomBarHeight
             ],
           ),
         ),

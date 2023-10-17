@@ -9,6 +9,8 @@ class UIScale {
   static late double bottomDevicePadding;
   static late double diagonalDevice;
 
+  static final SizedBox kBottomBarHeight = SizedBox(height: UIScale.height(10) + UIScale.bottomDevicePadding + 10);
+
   static double width(double percentage) => (widthDevice / 100) * percentage;
   static double height(double percentage) => (heightDevice / 100) * percentage;
   static double textSize(double size) => (widthDevice / 1000) * size;
