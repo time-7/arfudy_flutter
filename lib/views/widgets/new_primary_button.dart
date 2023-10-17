@@ -10,11 +10,49 @@ class NewPrimaryButton extends StatefulWidget {
     required this.buttonText,
     this.onPressed,
     this.isLoading,
+    this.width = 260,
+    this.height = 62,
+    this.backgroundColor = UIColors.secondaryCaramel,
+    this.fontColor = UIColors.tertiaryCaramel,
+    this.borderWidth = 2,
+    this.fontSize = 18,
   }) : super(key: key);
 
   final String buttonText;
   final VoidCallback? onPressed;
   final RxBool? isLoading;
+  final double width;
+  final double height;
+  final Color backgroundColor;
+  final Color fontColor;
+  final double borderWidth;
+  final double fontSize;
+
+  const NewPrimaryButton.minimal({
+    super.key,
+    required this.buttonText,
+    this.onPressed,
+    this.isLoading,
+    this.width = 202,
+    this.height = 38,
+    this.backgroundColor = UIColors.tertiaryCaramel,
+    this.fontColor = UIColors.secondaryCaramel,
+    this.borderWidth = 1,
+    this.fontSize = 16,
+  });
+
+  const NewPrimaryButton.cancel({
+    super.key,
+    this.buttonText = 'Cancelar',
+    this.onPressed,
+    this.isLoading,
+    this.width = 164,
+    this.height = 38,
+    this.backgroundColor = UIColors.secondaryCaramel,
+    this.fontColor = UIColors.tertiaryCaramel,
+    this.borderWidth = 1,
+    this.fontSize = 16,
+  });
 
   @override
   State<NewPrimaryButton> createState() => _NewPrimaryButtonState();
@@ -72,17 +110,17 @@ class _NewPrimaryButtonState extends State<NewPrimaryButton> with SingleTickerPr
           return AnimatedContainer(
             duration: const Duration(milliseconds: 80),
             decoration: BoxDecoration(
-              color: _isPressed == false ? UIColors.secondaryCaramel : UIColors.primaryWhite,
+              color: _isPressed == false ? widget.backgroundColor : UIColors.primaryWhite,
               borderRadius: const BorderRadius.all(
                 Radius.circular(30),
               ),
               border: Border.all(
                 color: Colors.black,
-                width: 2,
+                width: widget.borderWidth,
               ),
             ),
-            width: widget.isLoading == null ? 260 : 260 - (_animationController.value * 260),
-            height: 62,
+            width: widget.isLoading == null ? widget.width : widget.width - (_animationController.value * widget.width),
+            height: widget.height,
             child: Obx(() {
               _isLoading!.value == false ? _handlingReverse() : _handlingFoward();
               return Container(
@@ -97,8 +135,10 @@ class _NewPrimaryButtonState extends State<NewPrimaryButton> with SingleTickerPr
                         child: NewUIText(
                           widget.buttonText,
                           textAlign: TextAlign.center,
-                          fontColor: UIColors.tertiaryCaramel,
-                          fontSize: widget.isLoading == null ? 18 : 18 - (_animationController.value * 18),
+                          fontColor: widget.fontColor,
+                          fontSize: widget.isLoading == null
+                              ? widget.fontSize
+                              : widget.fontSize - (_animationController.value * widget.fontSize),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
