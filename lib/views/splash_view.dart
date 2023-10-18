@@ -1,7 +1,6 @@
 import 'package:arfudy_flutter/delegate/arfudy_views_routes.dart';
 import 'package:arfudy_flutter/utils/new_ui_text.dart';
 import 'package:arfudy_flutter/utils/ui_colors.dart';
-import 'package:arfudy_flutter/utils/ui_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,7 +32,6 @@ class _AppSplashViewState extends State<AppSplashView> {
 
   @override
   Widget build(BuildContext context) {
-    UIScale.init(context);
     return Material(
       child: Container(
         color: UIColors.primaryBlue,

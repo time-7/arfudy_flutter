@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:arfudy_flutter/utils/ui_colors.dart';
+import 'package:arfudy_flutter/utils/ui_design.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,17 +21,8 @@ class ArfudyDialog {
                 margin: const EdgeInsets.symmetric(horizontal: 42),
                 decoration: BoxDecoration(
                   color: UIColors.secondaryCaramel,
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,
-                  ),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 0,
-                      offset: Offset(0, 4),
-                    )
-                  ],
+                  border: UIDesign.primaryBorder,
+                  boxShadow: UIDesign.primaryShadows,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(30),
                   ),

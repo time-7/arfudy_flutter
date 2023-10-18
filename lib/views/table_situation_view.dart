@@ -137,7 +137,7 @@ class TableSituationView extends StatelessWidget {
                   items: [],
                 ),
               ),
-              UIScale.kBottomBarHeight
+              UIScale.bottomBarHeightWidget
             ],
           ),
         ),

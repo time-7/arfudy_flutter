@@ -63,7 +63,7 @@ class TestView extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: MenuContainer(),
             ),
-            UIScale.kBottomBarHeight
+            UIScale.bottomBarHeightWidget
           ],
         ),
       ),

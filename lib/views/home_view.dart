@@ -24,7 +24,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    UIScale.init(context);
     return ArfudyScaffold(
       body: ValueListenableBuilder<HomeViewState>(
         valueListenable: HomeViewController.state,
