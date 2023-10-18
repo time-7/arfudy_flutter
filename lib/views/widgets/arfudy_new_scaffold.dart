@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/ui_colors.dart';
+import '../../utils/ui_design.dart';
 import '../../utils/ui_scale.dart';
 import 'arfudy_drawer.dart';
 
@@ -35,13 +36,7 @@ class ArfudyNewScaffold extends StatelessWidget {
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black,
-                blurRadius: 0,
-                offset: Offset(0, 4),
-              )
-            ],
+            boxShadow: UIDesign.primaryShadows,
           ),
           child: Padding(
             padding: const EdgeInsets.only(right: 30.0, left: 30),

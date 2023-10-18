@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/new_ui_text.dart';
 import '../../utils/ui_colors.dart';
+import '../../utils/ui_design.dart';
 
 class PrimaryTextField extends StatefulWidget {
   const PrimaryTextField({
@@ -55,7 +56,6 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
           duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            boxShadow: const [],
           ),
           child: Padding(
             padding: const EdgeInsets.all(2.0),
@@ -63,17 +63,8 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
               decoration: BoxDecoration(
                 color: UIColors.primaryWhite,
                 borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: Colors.black,
-                  width: 2,
-                ),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 0,
-                    offset: Offset(0, 4),
-                  )
-                ],
+                border: UIDesign.primaryBorder,
+                boxShadow: UIDesign.primaryShadows,
               ),
               child: TextFormField(
                 keyboardType: widget.keyboardType,

@@ -1,4 +1,5 @@
 import 'package:arfudy_flutter/utils/new_ui_text.dart';
+import 'package:arfudy_flutter/utils/ui_design.dart';
 import 'package:arfudy_flutter/views/widgets/arfudy_new_scaffold.dart';
 import 'package:arfudy_flutter/views/widgets/new_primary_button.dart';
 import 'package:arfudy_flutter/views/widgets/primary_text_field.dart';
@@ -27,17 +28,8 @@ class EnteringTableView extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: UIColors.tertiaryCaramel,
                   borderRadius: const BorderRadius.all(Radius.circular(30)),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,
-                  ),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 0,
-                      offset: Offset(0, 4),
-                    )
-                  ],
+                  border: UIDesign.primaryBorder,
+                  boxShadow: UIDesign.primaryShadows,
                 ),
                 width: UIScale.width(50),
                 child: const Column(

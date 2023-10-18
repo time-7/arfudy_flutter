@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/new_ui_text.dart';
 import '../../utils/ui_colors.dart';
+import '../../utils/ui_design.dart';
 import '../../utils/ui_scale.dart';
 
 class PersonOrdersContainer extends StatefulWidget {
@@ -47,13 +48,7 @@ class _PersonOrdersContainerState extends State<PersonOrdersContainer> {
               borderRadius: const BorderRadius.all(
                 Radius.circular(30),
               ),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black,
-                  blurRadius: 0,
-                  offset: Offset(0, 4),
-                )
-              ],
+              boxShadow: UIDesign.primaryShadows,
             ),
             child: Padding(
               padding: const EdgeInsets.only(top: 38),
