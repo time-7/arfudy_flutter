@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../delegate/arfudy_views_routes.dart';
 import '../../utils/new_ui_text.dart';
 import '../../utils/ui_colors.dart';
 import '../../utils/ui_scale.dart';
@@ -49,19 +51,58 @@ class _ArfudyDrawerState extends State<ArfudyDrawer> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 32.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
-                    SizedBox(
-                      height: UIScale.height(10) + UIScale.topDevicePadding,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: UIScale.topDevicePadding + 50,
+                        ),
+                        const NewUIText(
+                          'Olá,',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        const NewUIText(
+                          'Fulano',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        const SizedBox(
+                          width: 100,
+                          child: NewUIText(
+                            'Minha comanda',
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(
+                      height: 100,
+                    ),
+                    SizedBox(
                       width: 100,
-                      child: NewUIText(
-                        'Minha comanda',
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
+                      child: GestureDetector(
+                        onTap: () async {
+                          print('object');
+
+                          Get.toNamed(ArfudyRoutes.tablesQrCodeTest);
+                        },
+                        child: const NewUIText(
+                          'TESTE MESAS',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
                     )
                   ],
