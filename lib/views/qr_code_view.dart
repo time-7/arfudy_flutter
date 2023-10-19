@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:arfudy_flutter/views/widgets/new_primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../delegate/arfudy_views_routes.dart';
+import '../models/active_table_model.dart';
 import '../utils/new_ui_text.dart';
 import '../utils/ui_colors.dart';
 import '../utils/ui_scale.dart';
@@ -27,6 +32,8 @@ class _QrCodeViewState extends State<QrCodeView> {
     super.initState();
   }
 
+  bool _foundCode = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,10 +48,22 @@ class _QrCodeViewState extends State<QrCodeView> {
                   child: Text('Erro ao iniciar a câmera'),
                 );
               },
-              onDetect: (capture) {
+              onDetect: (capture) async {
                 final List<Barcode> barcodes = capture.barcodes;
-                for (final barcode in barcodes) {
+                if (_foundCode) {
+                  return;
+                } else {
+                  final barcode = barcodes[0];
                   debugPrint('Barcode found! ${barcode.rawValue}');
+                  final table = _tryToConvertBarCode(barcode.rawValue);
+                  if (table.runtimeType == ActiveTableModel) {
+                    _foundCode = true;
+                    Get.offAndToNamed(
+                      ArfudyRoutes.enteringTable,
+                      arguments: table,
+                    );
+                    _foundCode = false;
+                  }
                 }
               },
             ),
@@ -106,6 +125,19 @@ class _QrCodeViewState extends State<QrCodeView> {
         ],
       ),
     );
+  }
+
+  ActiveTableModel? _tryToConvertBarCode(String? barcode) {
+    try {
+      if (barcode != null) {
+        Map<String, dynamic> map = json.decode(barcode);
+        return ActiveTableModel.fromJson(map);
+      }
+      return null;
+    } catch (e) {
+      debugPrint('Error on convert barcode to json: $e');
+      return null;
+    }
   }
 
   @override

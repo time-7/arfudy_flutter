@@ -11,6 +11,7 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  GlobalModule.inject();
   runApp(const MyApp());
 }
 

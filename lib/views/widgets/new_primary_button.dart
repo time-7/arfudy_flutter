@@ -94,7 +94,9 @@ class _NewPrimaryButtonState extends State<NewPrimaryButton> with SingleTickerPr
         _isPressed = false;
         if (widget.onPressed != null && !_isLoading!.value) {
           if (_isLoading!.value == false) widget.onPressed!();
-          _animationController.forward();
+          if (_isLoading!.value) {
+            _animationController.forward();
+          }
         } else {
           _animationController.reverse();
         }

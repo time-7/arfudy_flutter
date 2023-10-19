@@ -4,11 +4,13 @@ import 'package:arfudy_flutter/views/widgets/arfudy_new_scaffold.dart';
 import 'package:arfudy_flutter/views/widgets/new_primary_button.dart';
 import 'package:arfudy_flutter/views/widgets/primary_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
+import '../controllers/entering_table_view_controller.dart';
 import '../utils/ui_colors.dart';
 import '../utils/ui_scale.dart';
 
-class EnteringTableView extends StatelessWidget {
+class EnteringTableView extends GetView<EnteringTableViewController> {
   EnteringTableView({super.key});
 
   final TextEditingController _controller = TextEditingController();
@@ -32,11 +34,11 @@ class EnteringTableView extends StatelessWidget {
                   boxShadow: UIDesign.primaryShadows,
                 ),
                 width: UIScale.width(50),
-                child: const Column(
+                child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      NewUIText(
+                      const NewUIText(
                         'Sua mesa é a número:',
                         textAlign: TextAlign.center,
                         fontSize: 20,
@@ -46,12 +48,12 @@ class EnteringTableView extends StatelessWidget {
                       Stack(
                         children: [
                           NewUIText(
-                            '6',
+                            controller.table.tableNumber.toString(),
                             textAlign: TextAlign.center,
                             fontSize: 64,
                             fontWeight: FontWeight.w500,
                             fontColor: UIColors.secondaryCaramel,
-                            shadows: [
+                            shadows: const [
                               BoxShadow(
                                 color: Colors.black,
                                 blurRadius: 0,

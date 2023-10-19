@@ -1,8 +1,11 @@
 import 'package:arfudy_flutter/delegate/arfudy_views_routes.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:arfudy_flutter/services/core_http_client.dart';
+import 'package:get/get.dart';
 
 class GlobalModule {
-  static inject() {}
+  static inject() {
+    Get.put<IHttpClient>(CoreHttpClient());
+  }
 
   static List<GetPage<dynamic>> get routes => _routes;
 
