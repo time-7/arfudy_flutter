@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../utils/new_ui_text.dart';
 import '../../utils/ui_colors.dart';
 import '../../utils/ui_scale.dart';
-import '../../utils/ui_text.dart';
 
 class PriceTag extends StatelessWidget {
   const PriceTag(
