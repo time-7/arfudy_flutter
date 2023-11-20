@@ -11,6 +11,7 @@ class NewUIText extends StatelessWidget {
     this.decoration,
     this.textAlign,
     this.shadows,
+    this.softWrap = false,
   });
 
   final String text;
@@ -21,6 +22,7 @@ class NewUIText extends StatelessWidget {
   final TextDecoration? decoration;
   final TextAlign? textAlign;
   final List<Shadow>? shadows;
+  final bool softWrap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +30,14 @@ class NewUIText extends StatelessWidget {
       text,
       textAlign: textAlign,
       style: TextStyle(
-          decoration: decoration,
-          fontFamily: fontFamily.name,
-          fontSize: fontSize,
-          color: fontColor,
-          fontWeight: fontWeight,
-          shadows: shadows),
+        decoration: decoration,
+        fontFamily: fontFamily.name,
+        fontSize: fontSize,
+        color: fontColor,
+        fontWeight: fontWeight,
+        shadows: shadows,
+      ),
+      softWrap: softWrap,
     );
   }
 }

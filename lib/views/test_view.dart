@@ -1,4 +1,8 @@
+import 'package:arfudy_flutter/models/active_table_model.dart';
+import 'package:arfudy_flutter/models/ingredient_model.dart';
+import 'package:arfudy_flutter/models/meal_model.dart';
 import 'package:arfudy_flutter/views/widgets/arfudy_new_scaffold.dart';
+import 'package:arfudy_flutter/views/widgets/meal_card.dart';
 import 'package:arfudy_flutter/views/widgets/menu_container.dart';
 import 'package:arfudy_flutter/views/widgets/new_primary_button.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +37,15 @@ class TestView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(ArfudyRoutes.enteringTable);
+                  Get.toNamed(
+                    ArfudyRoutes.enteringTable,
+                    arguments: ActiveTableModel(
+                      id: '1',
+                      activeToken: 'token',
+                      tableNumber: 1,
+                      seatsNumber: 2,
+                    ),
+                  );
                 },
                 child: const MenuContainer(
                   text: 'ENTERING TABLE VIEW',
@@ -51,13 +63,33 @@ class TestView extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: MenuContainer(),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: MenuContainer(),
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(vertical: 16.0),
+            //   child: GestureDetector(
+            //     onTap: () => Get.to(p),
+            //     child: MenuContainer(text: "FOOD VIEW",),
+            //   ),
+            // ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: MealCard(
+                meal: MealModel(
+                  id: 1,
+                  name: 'Polenta',
+                  description: 'Polenta de farinha de milho',
+                  imageUrl:
+                      'https://www.cozinhatecnica.com/wp-content/uploads/2023/01/receita-de-polenta.jpg',
+                  has3d: false,
+                  mealPrice: '30,50',
+                  nutritionalValue: 100,
+                  ingredients: [
+                    IngredientModel(
+                      id: 1,
+                      name: 'Farinha de milho',
+                    ),
+                  ],
+                ),
+              ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),

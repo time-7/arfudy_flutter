@@ -3,9 +3,10 @@ import 'package:arfudy_flutter/views/widgets/price_tag.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/meal_model.dart';
+import '../../utils/new_ui_text.dart';
 import '../../utils/ui_colors.dart';
+import '../../utils/ui_design.dart';
 import '../../utils/ui_scale.dart';
-import '../../utils/ui_text.dart';
 import 'ar_button.dart';
 
 class MealCard extends StatelessWidget {
@@ -23,62 +24,82 @@ class MealCard extends StatelessWidget {
       child: Container(
         height: UIScale.height(20),
         decoration: BoxDecoration(
-          color: UIColors.offWhite,
-          borderRadius: BorderRadius.circular(10),
+          color: UIColors.primaryWhite,
+          border: UIDesign.primaryBorder,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(30),
+          ),
+          boxShadow: UIDesign.primaryShadows,
         ),
+        padding: EdgeInsets.all(UIScale.width(3)),
         child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              flex: 6,
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 6,
-                    child: Padding(
-                      padding: EdgeInsets.all(UIScale.width(3)),
-                      child: Container(
-                        alignment: Alignment.topLeft,
-                        child: UIText(meal.name),
-                      ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(UIScale.width(1.5)),
+                  child: NewUIText(
+                    meal.name,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    fontColor: Colors.black,
+                  ),
+                ),
+                SizedBox(
+                  width: UIScale.width(45),
+                  child: Padding(
+                    padding: EdgeInsets.all(UIScale.width(1.5)),
+                    child: NewUIText(
+                      meal.description,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      fontColor: Colors.black,
+                      softWrap: true,
                     ),
                   ),
-                  Expanded(
-                    flex: 4,
-                    child: Container(
-                      alignment: Alignment.topLeft,
-                      padding: EdgeInsets.all(UIScale.width(3)),
-                      child: Row(children: [
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Row(
+                      children: [
                         PriceTag(meal.mealPrice),
                         SizedBox(
                           width: UIScale.width(2),
                         ),
                         meal.has3d == true ? ARButton(meal) : const SizedBox(),
-                      ]),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             Expanded(
-              flex: 4,
-              child: Padding(
-                padding: EdgeInsets.only(right: UIScale.width(2)),
-                child: Column(
-                  children: [
-                    Flexible(
-                      child: Center(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.network(
-                            meal.imageUrl,
-                            height: UIScale.width(30),
-                            width: UIScale.width(30),
-                            fit: BoxFit.cover,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(left: UIScale.width(2)),
+                  child: Column(
+                    children: [
+                      Flexible(
+                        child: Center(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.network(
+                              meal.imageUrl,
+                              height: UIScale.width(30),
+                              width: UIScale.width(30),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             )
