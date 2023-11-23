@@ -138,7 +138,7 @@ class FoodView extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(top: UIScale.height(2)),
                           child: UIText(
-                            "${meal.nutritionalValue} Kcal",
+                            "${meal.nutritionFacts} Kcal",
                             fontSize: UIScale.width(5),
                           ),
                         ),
@@ -169,7 +169,7 @@ class FoodView extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(top: UIScale.height(2)),
                           child: UIText(
-                            "R\$ ${meal.mealPrice}",
+                            "R\$ ${meal.price}",
                             fontSize: UIScale.width(5),
                           ),
                         ),

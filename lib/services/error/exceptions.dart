@@ -38,3 +38,8 @@ class GetTablesException extends NewCoreException {
   @override
   String get label => 'GetTablesException';
 }
+
+class GetMealsNewException extends NewCoreException {
+  @override
+  String get label => 'GetMealsException';
+}

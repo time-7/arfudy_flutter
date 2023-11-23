@@ -22,7 +22,7 @@ class MealCard extends StatelessWidget {
         ),
       ),
       child: Container(
-        height: UIScale.height(20),
+        height: UIScale.height(26),
         decoration: BoxDecoration(
           color: UIColors.primaryWhite,
           border: UIDesign.primaryBorder,
@@ -31,78 +31,76 @@ class MealCard extends StatelessWidget {
           ),
           boxShadow: UIDesign.primaryShadows,
         ),
-        padding: EdgeInsets.all(UIScale.width(3)),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        padding: EdgeInsets.all(UIScale.width(4)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(UIScale.width(1.5)),
-                  child: NewUIText(
-                    meal.name,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    fontColor: Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: UIScale.width(45),
-                  child: Padding(
-                    padding: EdgeInsets.all(UIScale.width(1.5)),
-                    child: NewUIText(
-                      meal.description,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      fontColor: Colors.black,
-                      softWrap: true,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Row(
+            Padding(
+              padding: EdgeInsets.only(bottom: UIScale.width(2)),
+              child: NewUIText(
+                meal.name,
+                fontSize: 22,
+                fontWeight: FontWeight.w600,
+                fontColor: Colors.black,
+                softWrap: true,
+              ),
+            ),
+            Flexible(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        PriceTag(meal.mealPrice),
                         SizedBox(
-                          width: UIScale.width(2),
+                          width: UIScale.width(40),
+                          child: NewUIText(
+                            meal.description,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            fontColor: Colors.black,
+                            softWrap: true,
+                            maxLines: 6,
+                          ),
                         ),
-                        meal.has3d == true ? ARButton(meal) : const SizedBox(),
+                        const Spacer(),
+                        SizedBox(
+                          height: UIScale.height(4),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              PriceTag(meal.price),
+                              SizedBox(width: UIScale.width(2)),
+                              meal.has3dModel == true
+                                  ? ARButton(meal)
+                                  : const SizedBox(),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
-                ),
-              ],
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: EdgeInsets.only(left: UIScale.width(2)),
-                  child: Column(
-                    children: [
-                      Flexible(
-                        child: Center(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.network(
-                              meal.imageUrl,
-                              height: UIScale.width(30),
-                              width: UIScale.width(30),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      meal.imageUrl,
+                      height: UIScale.width(30),
+                      width: UIScale.width(30),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
