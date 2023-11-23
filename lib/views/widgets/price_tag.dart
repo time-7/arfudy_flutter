@@ -24,7 +24,7 @@ class PriceTag extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: NewUIText(
-        "R\$ $price",
+        "R\$ ${double.tryParse(price)?.toStringAsFixed(2).replaceAll('.', ',')}",
         fontSize: UIScale.width(3.5),
         fontWeight: FontWeight.w500,
         fontColor: UIColors.offWhite,
