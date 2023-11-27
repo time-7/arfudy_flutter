@@ -28,20 +28,18 @@ class FoodViewController extends GetxController {
     isPosting.value = true;
     await Future.delayed(const Duration(seconds: 2));
     try {
-      final response = await GatewayHandler.call(
+      final response = await GatewayHandler.call<String>(
         requisitionCallback: () => _gateway.post(
           '/orders',
           headers: {"clientToken": _clientRepository.currentClient.value.token},
           data: buildData(meal),
           isFormData: false,
-          printData: true,
         ),
-        onSuccessCallback: (data) {
-          isPosting.value = false;
-          return data['message'];
-        },
+        onSuccessCallback: (data) => data['message'],
         exception: PostOrderException(),
       );
+      isPosting.value = false;
+      return response;
     } catch (e) {
       debugPrint((e as NewCoreException).label);
       ArfudyDialog.show(
