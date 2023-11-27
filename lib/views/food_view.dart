@@ -1,197 +1,175 @@
+import 'package:arfudy_flutter/controllers/food_view_controller.dart';
+import 'package:arfudy_flutter/utils/arfudy_dialog.dart';
+import 'package:arfudy_flutter/utils/extensions/string_extension.dart';
+import 'package:arfudy_flutter/utils/new_ui_text.dart';
 import 'package:arfudy_flutter/utils/ui_colors.dart';
-import 'package:arfudy_flutter/views/widgets/arfudy_scaffold.dart';
+import 'package:arfudy_flutter/views/widgets/new_primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../models/meal_model.dart';
+import '../utils/ui_design.dart';
 import '../utils/ui_scale.dart';
-import '../utils/ui_text.dart';
+import 'widgets/arfudy_new_scaffold.dart';
+import 'widgets/meal_container.dart';
+import 'widgets/meal_info_container.dart';
 
-class FoodView extends StatelessWidget {
+class FoodView extends GetView<FoodViewController> {
   const FoodView({Key? key, required this.meal}) : super(key: key);
   final MealModel meal;
 
   @override
   Widget build(BuildContext context) {
-    return ArfudyScaffold(
-      leading: const BackButton(
-        color: Colors.white,
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: UIScale.height(2)),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: UIScale.height(1.5),
-              ),
-              Container(
-                width: UIScale.width(100),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
+    return ArfudyNewScaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            MealContainer(
+              imageUrl: meal.imageUrl,
+              name: meal.name,
+            ),
+            MealInfoContainer(
+              title: 'Descrição',
+              value: meal.description,
+              isInRow: false,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MealInfoContainer(
+                  title: 'Calorias',
+                  value: "${meal.nutritionFacts.totalCalories} kcal",
+                  isInRow: true,
                 ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: UIScale.height(2)),
-                      child: UIText(
-                        meal.name,
-                        textAlign: TextAlign.center,
-                        fontWeight: FontWeight.bold,
+                MealInfoContainer(
+                  title: 'Preço',
+                  value: meal.price.toStringAsFixed(2).toReal(),
+                  isInRow: true,
+                ),
+              ],
+            ),
+            Container(
+              width: UIScale.width(100),
+              decoration: BoxDecoration(
+                color: UIColors.primaryWhite,
+                border: UIDesign.primaryBorder,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(40),
+                ),
+                boxShadow: UIDesign.primaryShadows,
+              ),
+              padding: EdgeInsets.symmetric(
+                vertical: UIScale.height(1),
+                horizontal: UIScale.width(8),
+              ),
+              margin: EdgeInsets.symmetric(vertical: UIScale.height(1)),
+              child: Row(
+                children: [
+                  const NewUIText(
+                    'Quantidade',
+                    fontWeight: FontWeight.w500,
+                    fontColor: UIColors.secondaryBlue,
+                    fontSize: 20,
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: EdgeInsets.only(right: UIScale.width(4)),
+                    child: Obx(
+                      () => IconButton(
+                        onPressed: controller.quantity.value > 0
+                            ? controller.decrement
+                            : () {},
+                        icon: const Icon(
+                          Icons.remove,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: UIScale.height(2)),
-                      child: Stack(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.network(
-                              meal.imageUrl,
-                              height: UIScale.width(50),
-                              width: UIScale.width(50),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          StatefulBuilder(builder:
-                              (BuildContext context, StateSetter setState) {
-                            return AnimatedOpacity(
-                              duration: const Duration(seconds: 2),
-                              opacity: 0,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                height: UIScale.width(50),
-                                width: UIScale.width(50),
-                              ),
-                            );
-                          }),
-                        ],
+                  ),
+                  Obx(
+                    () => NewUIText(
+                      controller.quantity.value.toString(),
+                      fontWeight: FontWeight.w700,
+                      fontColor: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: UIScale.width(4)),
+                    child: IconButton(
+                      onPressed: controller.increment,
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.black,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(UIScale.height(2)),
-                      child: UIText(meal.description,
-                          textAlign: TextAlign.justify),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SizedBox(
-                height: UIScale.height(1),
+            ),
+            Visibility(
+              visible: meal.ingredients.isNotEmpty,
+              child: MealInfoContainer(
+                title: 'Ingredientes',
+                value: meal.ingredients.map((e) => e.name).toList().join(', '),
+                isInRow: false,
               ),
-              Container(
-                padding: EdgeInsets.only(
-                    top: UIScale.height(2), bottom: UIScale.height(1)),
-                width: UIScale.width(100),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  children: [
-                    const UIText(
-                      "Ingredientes",
-                      fontWeight: FontWeight.bold,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: UIScale.height(2)),
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          itemCount: meal.ingredients.length,
-                          itemBuilder: ((context, index) {
-                            return Column(
-                              children: [
-                                UIText(meal.ingredients[index].name,
-                                    fontSize: UIScale.width(5)),
-                                const Divider()
-                              ],
-                            );
-                          })),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: UIScale.height(1),
-              ),
-              Container(
-                padding: EdgeInsets.only(
-                    top: UIScale.height(2), bottom: UIScale.height(1)),
-                width: UIScale.width(100),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  children: [
-                    Column(
-                      children: [
-                        const UIText(
-                          "Valor Nutricional",
-                          fontWeight: FontWeight.bold,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: UIScale.height(2)),
-                          child: UIText(
-                            "${meal.nutritionFacts} Kcal",
-                            fontSize: UIScale.width(5),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: UIScale.height(1.5),
-              ),
-              Container(
-                padding: EdgeInsets.only(
-                    top: UIScale.height(2), bottom: UIScale.height(1)),
-                width: UIScale.width(100),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  children: [
-                    Column(
-                      children: [
-                        const UIText(
-                          "Valor",
-                          fontWeight: FontWeight.bold,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: UIScale.height(2)),
-                          child: UIText(
-                            "R\$ ${meal.price}",
-                            fontSize: UIScale.width(5),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: UIScale.height(1.5),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: UIScale.height(12))
+          ],
         ),
       ),
-      fab: FloatingActionButton(
-        onPressed: () =>
-            Navigator.of(context).pushNamed('ar_page', arguments: meal),
-        child: const Icon(
-          Icons.view_in_ar,
-          color: UIColors.offWhite,
-        ),
+      bottomBar: NewPrimaryButton(
+        buttonText: 'Fazer pedido',
+        isLoading: controller.isPosting,
+        onPressed: () async {
+          if (controller.quantity.value == 0) {
+            ArfudyDialog.show(
+              content: Column(
+                children: [
+                  const NewUIText(
+                    'Você precisa adicionar pelo menos 1 item para fazer o pedido',
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  const SizedBox(height: 30),
+                  NewPrimaryButton.cancel(
+                    buttonText: 'Ok',
+                    onPressed: () {
+                      Get.back();
+                    },
+                  ),
+                ],
+              ),
+            );
+          } else {
+            if (await controller.postOrder(meal) ==
+                'Pedido realizado com sucesso!') {
+              ArfudyDialog.show(
+                content: Column(
+                  children: [
+                    const NewUIText(
+                      'Pedido realizado com sucesso!',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      softWrap: true,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 15),
+                    NewUIText(
+                      'Detalhes do pedido:\n'
+                      '\nItem: ${meal.name}'
+                      '\nQuantidade: ${controller.quantity.value.toString()}'
+                      '\nValor: ${(meal.price * controller.quantity.value).toString().toReal()}',
+                    ),
+                  ],
+                ),
+              );
+            }
+          }
+          controller.quantity.value = 0;
+        },
       ),
     );
   }
