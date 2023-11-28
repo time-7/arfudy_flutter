@@ -24,6 +24,8 @@ class CenterText extends StatelessWidget {
           text,
           fontColor: UIColors.primaryWhite,
           fontSize: 20,
+          softWrap: true,
+          textAlign: TextAlign.center,
         ),
       ),
     );
