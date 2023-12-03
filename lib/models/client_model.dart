@@ -12,7 +12,7 @@ class ClientModel {
   factory ClientModel.fromJson(Map<String, dynamic> json) => ClientModel(
         name: json["name"],
         token: json["clientToken"],
-        isAdmin: json["isAdmin"],
+        isAdmin: json["isAdmin"] as bool,
       );
 
   @override

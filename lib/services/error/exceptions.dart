@@ -18,8 +18,7 @@ abstract class NewCoreException implements Exception {
   String get label;
 
   List<String> get failureMessages => _failuresMessages;
-
-  late final int statusCode;
+  int statusCode = 0;
   final List<String> _failuresMessages = [];
 
   setStatusCode(int code) {

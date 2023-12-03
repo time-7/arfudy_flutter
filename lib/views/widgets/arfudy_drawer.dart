@@ -65,7 +65,7 @@ class _ArfudyDrawerState extends State<ArfudyDrawer> {
                           height: UIScale.topDevicePadding + 50,
                         ),
                         NewUIText(
-                          'Olá, ${clientRepository.currentClient.value.name}',
+                          'Olá, ${clientRepository.currentClient.value!.name}',
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                         ),
