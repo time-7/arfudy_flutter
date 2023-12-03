@@ -43,8 +43,12 @@ class _AppSplashViewState extends State<AppSplashView> {
               top: _positionWasTriggered == false
                   ? MediaQuery.of(context).size.height / 2 - 35
                   : (MediaQuery.of(context).size.height / 2) - 100,
-              left: _positionWasTriggered == false ? 10 : MediaQuery.of(context).size.width / 2 - 110,
-              right: _positionWasTriggered == false ? 10 : MediaQuery.of(context).size.width / 2 - 110,
+              left: _positionWasTriggered == false
+                  ? 10
+                  : MediaQuery.of(context).size.width / 2 - 110,
+              right: _positionWasTriggered == false
+                  ? 10
+                  : MediaQuery.of(context).size.width / 2 - 110,
               child: SizedBox(
                 child: Image.asset(
                   'assets/images/arfudy_new_logo.png',
@@ -83,6 +87,7 @@ class _AppSplashViewState extends State<AppSplashView> {
                             fontColor: Colors.white,
                             fontSize: 18,
                             textAlign: TextAlign.center,
+                            softWrap: true,
                           ),
                         ),
                       )
@@ -98,6 +103,6 @@ class _AppSplashViewState extends State<AppSplashView> {
   }
 
   handleInitialView() async {
-    Get.offNamed(ArfudyRoutes.test);
+    Get.offNamed(ArfudyRoutes.home);
   }
 }

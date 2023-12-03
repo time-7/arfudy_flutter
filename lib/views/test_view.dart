@@ -71,6 +71,17 @@ class TestView extends StatelessWidget {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(ArfudyRoutes.home);
+                },
+                child: const MenuContainer(
+                  text: 'HOME VIEW',
+                ),
+              ),
+            ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: MenuContainer(),
