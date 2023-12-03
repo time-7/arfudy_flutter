@@ -123,6 +123,28 @@ class FoodView extends GetView<FoodViewController> {
         buttonText: 'Fazer pedido',
         isLoading: controller.isPosting,
         onPressed: () async {
+          if (controller.clientRepository.currentClient.value == null) {
+            ArfudyDialog.show(
+              content: Column(
+                children: [
+                  const NewUIText(
+                    'Inicie um atendimento para realizar pedidos',
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  const SizedBox(height: 30),
+                  NewPrimaryButton.cancel(
+                    buttonText: 'Ok',
+                    onPressed: () {
+                      Get.back();
+                    },
+                  ),
+                ],
+              ),
+            );
+            return;
+          }
           if (controller.quantity.value == 0) {
             ArfudyDialog.show(
               content: Column(

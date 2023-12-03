@@ -14,7 +14,7 @@ class FoodViewController extends GetxController {
   final isPosting = false.obs;
 
   final _gateway = Get.find<IHttpClient>();
-  final _clientRepository = Get.find<ClientRepository>();
+  final clientRepository = Get.find<ClientRepository>();
 
   increment() {
     ++quantity.value;
@@ -31,7 +31,9 @@ class FoodViewController extends GetxController {
       final response = await GatewayHandler.call<String>(
         requisitionCallback: () => _gateway.post(
           '/orders',
-          headers: {"clientToken": _clientRepository.currentClient.value.token},
+          headers: {
+            "clientToken": clientRepository.currentClient.value!.token
+          },
           data: buildData(meal),
           isFormData: false,
         ),
@@ -65,7 +67,7 @@ class FoodViewController extends GetxController {
 
   Map<String, Object> buildData(MealModel meal) {
     return {
-      "serviceId": _clientRepository.service.value.id,
+      "serviceId": clientRepository.service.value!.id,
       "products": [
         {
           "id": meal.id,
