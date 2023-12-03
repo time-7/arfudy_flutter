@@ -53,10 +53,37 @@ class TableSituationView extends GetView<TableSituationViewController> {
             buttonText: 'Finalizar atendimento',
             isLoading: controller.isEndingService,
             onPressed: () async {
-              if (controller.clientRepository.currentClient.value.isAdmin &&
-                  controller.clientRepository.service.value.clients.length >
+              if (controller.clientRepository.currentClient.value!.isAdmin &&
+                  controller.clientRepository.service.value!.clients.length >
                       1) {
                 ArfudyDialog.show(content: const _EndServiceDialog());
+              } else {
+                ArfudyDialog.show(
+                  content: Column(
+                    children: [
+                      const NewUIText(
+                        'Tem certeza que deseja finalizar esse atendimento?',
+                        fontColor: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        textAlign: TextAlign.center,
+                        softWrap: true,
+                      ),
+                      const SizedBox(height: 26),
+                      NewPrimaryButton.minimal(
+                        buttonText: 'Sim',
+                        onPressed: () => controller.endService(),
+                        backgroundColor: UIColors.secondaryBlue,
+                      ),
+                      const SizedBox(height: 30),
+                      NewPrimaryButton.cancel(
+                        onPressed: () {
+                          Get.back();
+                        },
+                      ),
+                    ],
+                  ),
+                );
               }
             },
           ),
