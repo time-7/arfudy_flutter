@@ -107,7 +107,9 @@ class _QrCodeViewState extends State<QrCodeView> {
                             fontColor: Colors.white,
                             fontSize: 18,
                             textAlign: TextAlign.center,
+                            softWrap: true,
                           ),
+                          const SizedBox(height: 15),
                           NewPrimaryButton(
                             buttonText: 'Voltar',
                             onPressed: () {

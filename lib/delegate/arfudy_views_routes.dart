@@ -1,4 +1,5 @@
 import 'package:arfudy_flutter/views/entering_table_view.dart';
+import 'package:arfudy_flutter/views/home_view.dart';
 import 'package:arfudy_flutter/views/meals_view.dart';
 import 'package:arfudy_flutter/views/qr_code_view.dart';
 import 'package:arfudy_flutter/views/splash_view.dart';
@@ -21,6 +22,7 @@ class ArfudyRoutes {
   static const tableSituation = '/table-situation';
   static const tablesQrCodeTest = '/tables-qr-code-test';
   static const meals = '/meals';
+  static const home = '/home';
 }
 
 class ArfudyViews {
@@ -73,6 +75,13 @@ class ArfudyViews {
       transition: Transition.rightToLeft,
       name: ArfudyRoutes.meals,
       page: () => const MealsView(),
+      binding: _binding,
+    ),
+    GetPage(
+      curve: Curves.easeIn,
+      transition: Transition.rightToLeft,
+      name: ArfudyRoutes.home,
+      page: () => const HomeView(),
       binding: _binding,
     ),
   ];

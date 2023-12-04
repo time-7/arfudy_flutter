@@ -13,6 +13,7 @@ class NewUIText extends StatelessWidget {
     this.shadows,
     this.softWrap = false,
     this.maxLines,
+    this.overflow,
   });
 
   final String text;
@@ -25,13 +26,14 @@ class NewUIText extends StatelessWidget {
   final List<Shadow>? shadows;
   final bool softWrap;
   final int? maxLines;
+  final TextOverflow? overflow;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       textAlign: textAlign,
-      overflow: TextOverflow.ellipsis,
+      overflow: overflow,
       maxLines: maxLines,
       style: TextStyle(
         decoration: decoration,

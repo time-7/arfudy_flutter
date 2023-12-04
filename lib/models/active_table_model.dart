@@ -28,4 +28,9 @@ class ActiveTableModel {
       'seatNum': seatsNumber,
     };
   }
+
+  @override
+  String toString() {
+    return 'ActiveTableModel{id: $id, activeToken: $activeToken, tableNumber: $tableNumber, seatsNumber: $seatsNumber}';
+  }
 }

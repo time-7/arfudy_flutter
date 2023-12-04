@@ -16,12 +16,18 @@ class GetMealsException extends CoreException {
 
 abstract class NewCoreException implements Exception {
   String get label;
-  List<String> get failureMessages => _failuresMessages;
 
+  List<String> get failureMessages => _failuresMessages;
+  int statusCode = 0;
   final List<String> _failuresMessages = [];
 
+  setStatusCode(int code) {
+    statusCode = code;
+  }
+
   printE() {
-    debugPrintStack(label: 'Exception :: $label', stackTrace: StackTrace.current);
+    debugPrintStack(
+        label: 'Exception :: $label', stackTrace: StackTrace.current);
   }
 
   addFailureMessage(String message) {
@@ -42,4 +48,29 @@ class GetTablesException extends NewCoreException {
 class GetMealsNewException extends NewCoreException {
   @override
   String get label => 'GetMealsException';
+}
+
+class GetOrdersNewException extends NewCoreException {
+  @override
+  String get label => 'GetOrdersException';
+}
+
+class InitServiceException extends NewCoreException {
+  @override
+  String get label => 'InitServiceException';
+}
+
+class GetServiceException extends NewCoreException {
+  @override
+  String get label => 'GetServiceException';
+}
+
+class PostOrderException extends NewCoreException {
+  @override
+  String get label => 'PostOrderException';
+}
+
+class EndServiceException extends NewCoreException {
+  @override
+  String get label => 'EndServiceExcepttion';
 }

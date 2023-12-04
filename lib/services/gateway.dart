@@ -88,6 +88,7 @@ class GatewayHandler {
       }
 
       if (result.data['message'] != null) {
+        exception.setStatusCode(result.statusCode!);
         exception.addFailureMessage(result.data['message'].toString());
       }
 

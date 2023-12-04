@@ -11,9 +11,7 @@ import '../utils/ui_colors.dart';
 import '../utils/ui_scale.dart';
 
 class EnteringTableView extends GetView<EnteringTableViewController> {
-  EnteringTableView({super.key});
-
-  final TextEditingController _controller = TextEditingController();
+  const EnteringTableView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,8 @@ class EnteringTableView extends GetView<EnteringTableViewController> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 decoration: BoxDecoration(
                   color: UIColors.tertiaryCaramel,
                   borderRadius: const BorderRadius.all(Radius.circular(30)),
@@ -85,7 +84,7 @@ class EnteringTableView extends GetView<EnteringTableViewController> {
                 child: Column(
                   children: [
                     PrimaryTextField(
-                      controller: _controller,
+                      controller: controller.nameController,
                       hintText: 'Insira seu nome completo:',
                       textInputAction: TextInputAction.go,
                       keyboardType: TextInputType.name,
@@ -98,9 +97,9 @@ class EnteringTableView extends GetView<EnteringTableViewController> {
                 padding: const EdgeInsets.only(top: 30.0),
                 child: NewPrimaryButton(
                   buttonText: 'Continuar',
-                  onPressed: () {},
+                  onPressed: controller.initService,
                 ),
-              )
+              ),
             ],
           ),
         ),

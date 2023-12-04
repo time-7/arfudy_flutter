@@ -1,3 +1,5 @@
+import 'package:arfudy_flutter/models/client_model.dart';
+import 'package:arfudy_flutter/repositories/client_repository.dart';
 import 'package:arfudy_flutter/services/core_http_client.dart';
 import 'package:arfudy_flutter/services/error/exceptions.dart';
 import 'package:arfudy_flutter/services/gateway.dart';
@@ -10,6 +12,7 @@ class MealsViewController extends GetxController
   final meals = <MealModel>[].obs;
 
   final _gateway = Get.find<IHttpClient>();
+  final clientRepository = Get.find<ClientRepository>();
 
   @override
   onInit() async {

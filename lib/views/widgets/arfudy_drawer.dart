@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:arfudy_flutter/repositories/client_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,6 +21,7 @@ class ArfudyDrawer extends StatefulWidget {
 class _ArfudyDrawerState extends State<ArfudyDrawer> {
   final double _begin = 0.0;
   final double _end = 15.0;
+  final clientRepository = Get.find<ClientRepository>();
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +64,8 @@ class _ArfudyDrawerState extends State<ArfudyDrawer> {
                         SizedBox(
                           height: UIScale.topDevicePadding + 50,
                         ),
-                        const NewUIText(
-                          'Olá,',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        const NewUIText(
-                          'Fulano',
+                        NewUIText(
+                          'Olá, ${clientRepository.currentClient.value!.name}',
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                         ),
@@ -82,6 +79,7 @@ class _ArfudyDrawerState extends State<ArfudyDrawer> {
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline,
+                            softWrap: true,
                           ),
                         ),
                       ],
@@ -92,16 +90,13 @@ class _ArfudyDrawerState extends State<ArfudyDrawer> {
                     SizedBox(
                       width: 100,
                       child: GestureDetector(
-                        onTap: () async {
-                          print('object');
-
-                          Get.toNamed(ArfudyRoutes.tablesQrCodeTest);
-                        },
+                        onTap: () => Get.toNamed(ArfudyRoutes.tablesQrCodeTest),
                         child: const NewUIText(
                           'TESTE MESAS',
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.underline,
+                          softWrap: true,
                         ),
                       ),
                     )

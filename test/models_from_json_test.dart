@@ -5,9 +5,13 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'dart:core';
+
 import 'package:arfudy_flutter/models/ingredient_model.dart';
 import 'package:arfudy_flutter/models/meal_model.dart';
 import 'package:arfudy_flutter/models/nutrition_facts_model.dart';
+import 'package:arfudy_flutter/models/order_item_model.dart';
+import 'package:arfudy_flutter/models/table_service_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -119,7 +123,7 @@ void main() {
         description: 'dfsfsdfdsf',
         imageUrl: 'fdfsf,d',
         has3dModel: true,
-        price: '12,12',
+        price: 12.12,
         nutritionFacts: testNuNutritionFacts,
         ingredients: testIngredients,
         isVisible: true,
@@ -130,7 +134,7 @@ void main() {
         description: 'fsdfdsf',
         imageUrl: 'asdfasdf',
         has3dModel: false,
-        price: '15,12',
+        price: 15.12,
         nutritionFacts: testNuNutritionFacts,
         ingredients: testIngredients,
         isVisible: true,
@@ -146,7 +150,7 @@ void main() {
           'imageUrl': 'fdfsf,d',
           'has3dModel': true,
           'isVisible': true,
-          'price': '12,12',
+          'price': 12.12,
           'nutritionFacts': {
             "carbohydrate": 1,
             "protein": 2,
@@ -193,7 +197,7 @@ void main() {
           'imageUrl': 'asdfasdf',
           'has3dModel': false,
           'isVisible': true,
-          'price': '15,12',
+          'price': 15.12,
           'nutritionFacts': {
             "carbohydrate": 1,
             "protein": 2,
@@ -244,5 +248,45 @@ void main() {
     expect(testMeals[1].nutritionFacts, meals[1].nutritionFacts);
     expect(testMeals[0].ingredients[0].name, meals[0].ingredients[0].name);
     expect(testMeals[1].ingredients[1].name, meals[1].ingredients[1].name);
+  });
+
+  test('Should retrieve a List<List<TableServiceModel> from JSON', () {
+    final OrderItemModel product = OrderItemModel(
+        id: '1', name: 'Macarrão', quantity: 1, status: 'PENDING');
+
+    final TableServiceModel model = TableServiceModel(
+      id: '1',
+      serviceId: '1',
+      product: product,
+      clientName: 'Julia',
+      tableNum: 10,
+    );
+
+    final json = {
+      "data": [
+        [
+          {
+            "id": "1",
+            "serviceId": "1",
+            "product": {
+              "id": "1",
+              "name": "Macarrão",
+              "quantity": 1,
+              "status": "PENDING"
+            },
+            "clientName": "Julia",
+            "tableNum": 10
+          }
+        ],
+      ]
+    };
+
+    final List<List<TableServiceModel>> orders =
+    (json['data'] as List)
+        .map((e) => (e as List)
+        .map((e) => TableServiceModel.fromJson(e))
+        .toList())
+        .toList();
+    expect(orders[0].first.id, model.id);
   });
 }

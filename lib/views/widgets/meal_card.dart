@@ -78,7 +78,7 @@ class MealCard extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              PriceTag(meal.price),
+                              PriceTag(meal.price.toStringAsFixed(2)),
                               SizedBox(width: UIScale.width(2)),
                               meal.has3dModel == true
                                   ? ARButton(meal)

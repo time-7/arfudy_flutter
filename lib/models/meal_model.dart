@@ -10,7 +10,7 @@ class MealModel {
   final bool isVisible;
   final bool has3dModel;
   final String? unityModelId;
-  final String price;
+  final double price;
   final NutritionFactsModel nutritionFacts;
   final List<IngredientModel> ingredients;
 
@@ -33,7 +33,7 @@ class MealModel {
       description: proxyWords(20),
       imageUrl: proxyImgUrl,
       has3dModel: proxyBool,
-      price: (proxyDouble * 100).toStringAsFixed(2),
+      price: (proxyDouble * 100),
       isVisible: true,
       nutritionFacts: NutritionFactsModel.generateProxySingle(),
       ingredients: IngredientModel.generateProxyList(lenght: 5));
@@ -49,7 +49,7 @@ class MealModel {
         description: json["description"].toString(),
         imageUrl: json["imageUrl"].toString(),
         has3dModel: json["has3dModel"],
-        price: json["price"].toString(),
+        price: double.parse(json["price"].toString()),
         nutritionFacts: NutritionFactsModel.fromJson(json["nutritionFacts"]),
         isVisible: json["isVisible"],
         ingredients: List<IngredientModel>.from(
