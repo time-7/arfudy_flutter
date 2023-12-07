@@ -65,21 +65,25 @@ class _ArfudyDrawerState extends State<ArfudyDrawer> {
                           height: UIScale.topDevicePadding + 50,
                         ),
                         NewUIText(
-                          'Olá, ${clientRepository.currentClient.value!.name}',
+                          'Olá, ${clientRepository.currentClient.value!.name ?? ''}',
+                          // 'Olá',
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                         ),
                         const SizedBox(
                           height: 50,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 100,
-                          child: NewUIText(
-                            'Minha comanda',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.underline,
-                            softWrap: true,
+                          child: GestureDetector(
+                            onTap: () => Get.toNamed(ArfudyRoutes.tableSituation),
+                            child: NewUIText(
+                              'Minha comanda',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.underline,
+                              softWrap: true,
+                            ),
                           ),
                         ),
                       ],
