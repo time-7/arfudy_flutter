@@ -14,6 +14,7 @@ class MealsView extends GetView<MealsViewController> {
   Widget build(BuildContext context) {
     return ArfudyNewScaffold(
       hasDrawer: controller.clientRepository.currentClient.value != null,
+      // hasDrawer: true,
       body: RefreshIndicator(
         onRefresh: () => controller.getMeals(),
         child: controller.obx(
@@ -31,10 +32,10 @@ class MealsView extends GetView<MealsViewController> {
             onEmpty: CenterText.empty,
             onError: (error) => CenterText.error),
       ),
-      bottomBar: NewPrimaryButton(
+      bottomBar: controller.clientRepository.currentClient.value != null ? NewPrimaryButton(
         buttonText: 'Iniciar atendimento',
         onPressed: () => Get.toNamed(ArfudyRoutes.qrCode),
-      ),
+      ) : null,
     );
   }
 }

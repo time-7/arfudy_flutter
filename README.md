@@ -2,6 +2,52 @@
 
 Projeto desenvolvido pelo time 7 da matéria de Fabrica de Software 2022.2 da UTFPR.
 
-## Interfaces
+Estre porjeto foi retomado na matéria de Fábrica de Software no semetre de 2023.2 pelo time 8.
 
-<img alt="home" src="https://user-images.githubusercontent.com/52502707/207890978-ef00fdee-06a0-4bb6-a0ea-91be979b4ffb.png" width="200"><img alt="details" src="https://user-images.githubusercontent.com/52502707/207890997-d1c75e43-a444-49c0-b9b5-788ceac39d4b.png" width="200"><img alt="ar" src="https://user-images.githubusercontent.com/52502707/207891033-9e6f1107-4955-4a11-83df-0409cf6f8c76.png" width="200"><img alt="error" src="https://user-images.githubusercontent.com/52502707/207891045-6a0ccf07-a43a-4209-92c3-4404bd002362.png" width="200">
+Este projeto tem o objetivo de visualização de cardápio, realização de pedidos e 
+atendimento em restaurantes que utilizem a ARfudy,
+através de aplicativo mobile multi-plataforma
+
+### Características
+```
+Iniciar atendimento com leitura de QR code da mesa
+Geração dos QR codes das mesas
+Visualização do cardápio
+Visualização da tabela nutricional de cada item do cardápio
+Realização de pedidos
+Visualização da situação da mesa
+Encerramento de atendimento
+```
+
+### Tecnologia
+[Flutter framework](https://flutter.dev/) <br>
+[GetX - gerenciamento de estado, injeção de dependência e gerenciamento de rotas](https://pub.dev/packages/get)<br>
+[Modular - injeção de dependênicas em módulos](https://pub.dev/packages/flutter_modular)
+
+### Como usar
+Passo 1: instale o SDK do Flutter 
+```
+https://docs.flutter.dev/get-started/install
+```
+
+Passo 2: clone o repositório
+```
+git clone https://github.com/time-7/arfudy_flutter.git
+```
+Passo 3: Na raiz do projeto execute o comando no console para obter as dependências necessárias
+```
+flutter pub get
+```
+Passo 4: Na raiz do projeto execute o comando no console para rodar o app
+```
+flutter run
+```
+
+### Autores 2022.2
+[Eduardo Nonemacher](https://github.com/ernonemacher)<br>
+[Felippe Negrão](https://github.com/FelippeNO)<br>
+[Pedro Andreis](https://github.com/pedroandreis)
+
+### Autores 2023.2
+[Felippe Negrão](https://github.com/FelippeNO)<br>
+[Julia Stahl](https://github.com/JuliaMStahl)
