@@ -8,6 +8,8 @@ Este projeto tem o objetivo de visualização de cardápio, realização de pedi
 atendimento em restaurantes que utilizem a ARfudy,
 através de aplicativo mobile multi-plataforma
 
+Foi utilizado a lib flutter_unity_widget para implementar a Feature de realidade aumentada (AR) no qual os pratos do cardápio são representados em 3D. Para o build definitivo com a Feature habilitada é necessário descomentar as linhas de códigos relativas a funcionalidade. Buildar o projeto Unity de acordo com a documentação da biblioteca e em seguida rodar o projeto Flutter normalmente.
+
 ### Características
 ```
 Iniciar atendimento com leitura de QR code da mesa
@@ -22,7 +24,9 @@ Encerramento de atendimento
 ### Tecnologia
 [Flutter framework](https://flutter.dev/) <br>
 [GetX - gerenciamento de estado, injeção de dependência e gerenciamento de rotas](https://pub.dev/packages/get)<br>
-[Modular - injeção de dependênicas em módulos](https://pub.dev/packages/flutter_modular)
+[Modular - injeção de dependênicas em módulos](https://pub.dev/packages/flutter_modular)<br>
+[Unity](https://unity.com/pt)<br>
+[Flutter Unity Widget](https://pub.dev/packages/flutter_unity_widget)<br>
 
 ### Como usar
 Passo 1: instale o SDK do Flutter 
